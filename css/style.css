@@ -51,11 +51,11 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+    padding: 2.5rem;
 }
 
 .cards {
-    width: 50%;
+    width: 100%;
     height: 25%;
     border-radius: 1rem;
     background-color: #303030;
@@ -70,8 +70,8 @@ main {
 
 .cards article {
     background-color: #505050;
-    width: 10rem;
-    height: 10rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: 1rem;
     display: flex;
     align-items: center;
@@ -81,8 +81,8 @@ main {
 .main-box {
     background-color: #303030;
     border-radius: 2rem;
-    width: 75%;
-    height: 800px;
+    width: 100%;
+    height: 200px;
 }
 
 .main-box h1 {
