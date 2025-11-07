@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #202020;
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    
+    /* Layout */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 5rem 1fr;
+}
+
+header {
+    width: 100%;
+    height: 100px;
+    background-image: url("../assets/imagens/capa.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 3rem 15rem 3rem 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-column: 2 / 3;
+}
+
+aside {
+    width: 15rem;
+    grid-row: 1 / 3;
+    background-color: #303030;
+    padding: 1rem;
+}
+
+aside a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15pt;
+}
+
+main {   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.cards {
+    width: 50%;
+    height: 25%;
+    border-radius: 1rem;
+    background-color: #303030;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 3rem;
+    
+}
+
+.cards article {
+    background-color: #505050;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-box {
+    background-color: #303030;
+    border-radius: 2rem;
+    width: 75%;
+    height: 800px;
+}
+
+.main-box h1 {
+    text-align: center;
+}
