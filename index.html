@@ -7,23 +7,60 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Project music</h1>
-        <p>Seja bem-vindo! Líder de louvor</p>
-    </header>
     
-    <aside>
-        <a class="menu">menu</a>
+    <aside class="sidebar">
+        <div class="box-title">
+            <img src="assets/icones/project-icon.png" alt="Logo do projeto">
+            <h1>Project music</h1>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><img src="assets/icones/inicio-icon.png" alt="home"><a href="#">Início</a></li>
+                <li><img src="assets/icones/escalas-icon.png" alt="Escalas"><a href="#">Escalas</a></li>
+                <li><img src="assets/icones/ensaios-icon.png" alt="Ensaios"><a href="#">Ensaios</a></li>
+                <li><img src="assets/icones/musicas-icon.png" alt="Músicas"><a href="#">Músicas</a></li>
+                <li><img src="assets/icones/perfil-icon.png" alt="Perfil"><a href="#">Perfil</a></li>
+                <li><img src="assets/icones/notification-icon.png" alt="Notificações"><a href="#">Notificações</a></li>
+            </ul>
+            <div class="exit">
+                <span><img src="assets/icones/sair-icon.png" alt="Sair"><a href="#">Sair</a></span>
+            </div>
+        </nav>  
     </aside>
 
+    <header>
+        <h1>Seja bem-vindo!</h1>
+    </header>
+    
     <main>
         <div class="cards">
-            <article>Escalas</article>                                                  
-            <article>Ensaios</article>
-            <article>Músicas</article>
+            <article>
+                <p>Suas próximas escalas</p>
+            </article>                                          
+            <article>
+                <p>Notificações</p>
+            </article>
+            <article>
+                <p>Ensaios pendentes</p>
+            </article>
+            <article>
+                <p>Músicas do repertório geral</p>
+            </article>
         </div>
         <section class="main-box">
-            <h1>...</h1>
+            <article>
+                <h2>Próximas escalas</h2>
+                <p>As próximas escalas do ministério de louvor</p>
+            </article>
+            <article>
+                <h2>Notificações</h2>
+                <p>Notificações não lidas</p>
+            </article>
+            <article class="ensaios">
+                <h2>Ensaios</h2>
+                <p>Ensaios marcados</p>
+            </article>
+            
         </section>
     </main>
     <script src="js/main.js"></script>
