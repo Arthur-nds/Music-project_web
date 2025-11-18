@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+
 * {
     margin: 0;
     padding: 0;
@@ -53,7 +54,7 @@ header {
     list-style: none;
 }
 
-.sidebar .menu li, .sidebar .menu .exit span {
+.sidebar .menu li, .sidebar .menu .exit div {
     padding: .5rem .75rem;
     display: flex;
     align-items: center;
@@ -62,13 +63,14 @@ header {
     transition: background-color .3s ease;
 }
 
-.sidebar .menu li:hover, .sidebar .menu .exit span:hover {
+.sidebar .menu li:hover, .sidebar .menu .exit div:hover {
     background-color: #002265;
     cursor: pointer;
 }
 
 .sidebar .menu li img {
-    width: 20px;
+    width: 24px;
+    height: 24px;
 }
 
 .sidebar .menu li a {
@@ -92,16 +94,13 @@ header {
     color: #fff;
 }
 
-.sidebar .menu .exit span {
+.sidebar .menu .exit div {
     display: flex;
     align-items: center;
     gap: .5rem;
     transition: background-color .3s ease;
 }
 
-.sidebar .menu .exit span img {
-    width: 20px;
-}
 
 main {   
     display: flex;
@@ -125,8 +124,17 @@ main {
     padding: 1rem;
 }
 
-.cards article img {
-    width: 32px;
+.cards article .box-header {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cards article .box-header img {
+    width: 24px;
+    height: 24px;
+    /* filter: invert(1); */
+    color: #002265;
 }
 
 .main-box {
