@@ -122,19 +122,14 @@ main {
     border: 1px solid #c3c3c3;
     border-radius: .75rem;
     padding: 1rem;
+    line-height: 1.5rem;
 }
 
 .cards article .box-header {
     font-weight: bold;
     display: flex;
     justify-content: space-between;
-}
-
-.cards article .box-header img {
-    width: 24px;
-    height: 24px;
-    /* filter: invert(1); */
-    color: #002265;
+    align-items: center;
 }
 
 .main-box {
@@ -145,8 +140,64 @@ main {
     gap: 1.5rem;
 }
 
-.main-box article {
+.main-box section {
     border: 1px solid #c3c3c3;
     border-radius: .75rem;
     padding: 1rem;
+    overflow-y: auto;
+}
+
+.ensaios .item {
+    background-color: #f3f3f3;
+    border: 1px solid #c3c3c3;
+    border-radius: .5rem;
+    padding: .75rem;
+    margin: 1rem 0 1rem 0;
+
+    /* Layout */
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: .5rem;
+
+}
+
+.ensaios .item .time {
+    font-weight: bold;
+    color: #003399;
+}
+
+.ensaios .item .info {
+    padding: 0 .5rem 0 0;
+    /* display: flex;
+    flex-flow: row nowrap;
+    gap: 2.5rem;
+    align-items: center; */
+    
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.ensaios .item .info  {
+    color: #3e3e3e;
+}
+
+.ensaios .item .details,.time {
+    display: flex;
+    align-items: center;
+}
+
+.details button {
+    background-color: #003399;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: .5rem;
+    border-radius: .5rem;
+    transition: background-color .2s ease;
+}
+
+.details button:hover {
+    cursor: pointer;
+    background-color: #3366CC;
 }

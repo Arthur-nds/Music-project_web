@@ -6,7 +6,11 @@
     <title>Projeto web</title>
     <link rel="stylesheet" href="css/style.css">
      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    
+    <style>
+        .sidebar .menu .menu-home {
+            background-color: #3366CC;
+        }
+    </style>
 </head>
 <body>
     
@@ -17,8 +21,7 @@
         </div>
         <nav class="menu">
             <ul>
-                <!-- <li><img src="assets/icones/home.svg" alt="home"><a href="#">Início</a></li> -->
-                <li>
+                <li class="menu-home">
                     <span class="material-symbols-outlined">home</span>
                     <a href="#">Início</a>
                 </li>
@@ -55,36 +58,63 @@
     
     <main>
         <div class="cards">
-            <article>
+            <article class="card-escalas">
                 <div class="box-header">
                     <p>Suas próximas escalas</p>
-                    <img src="assets/icones/escalas-icon.svg" alt="Escalas">
-                </div>
-                
+                    <span class="material-symbols-outlined">calendar_month</span>
+                </div>  
+                <span class="resp">0</span>
             </article>                                          
-            <article>
-                <p>Notificações</p>
+            <article class="card-notifications">
+                <div class="box-header">
+                    <p>Notificações</p>
+                    <span class="material-symbols-outlined">notifications</span>
+                </div>
+                <span class="resp">0</span>
             </article>
-            <article>
-                <p>Ensaios pendentes</p>
+            <article class="card-ensaios">
+                <div class="box-header">
+                    <p>Ensaios pendentes</p>
+                    <span class="material-symbols-outlined">schedule</span>
+                </div>
+                <span class="resp">0</span>
             </article>
-            <article>
-                <p>Músicas do repertório geral</p>
+            <article class="card-musicas">
+                <div class="box-header">
+                    <p>Repositório completo</p>
+                    <span class="material-symbols-outlined">library_music</span>
+                </div>
+                <span class="resp">0</span>
             </article>
+            
         </div>
         <section class="main-box">
-            <article>
+            <section>
                 <h2>Próximas escalas</h2>
                 <p>As próximas escalas do ministério de louvor</p>
-            </article>
-            <article>
+            </section>
+            <section>
                 <h2>Notificações</h2>
                 <p>Notificações não lidas</p>
-            </article>
-            <article class="ensaios">
-                <h2>Ensaios</h2>
-                <p>Ensaios marcados</p>
-            </article>
+            </section>
+            <section class="ensaios">
+                
+                <div class="box-header">
+                    <h2>Ensaios</h2>
+                    <p>Ensaios marcados</p>
+                </div>
+                <article class="item">
+                    <h3>Ensaio geral</h3>
+                    <div class="time">0 dias</div>
+                    <div class="info">
+                        <span class="data-hora">Data: 20/11/2025</span>
+                        <span class="horario">Horário: 19h</span>    
+                        <span class="escala">Escala: 23/11/2025</span>
+                    </div>
+                    <div class="details"><button>Mais detalhes</button></div>
+                </article>
+                
+            </section>
             
         </section>
     </main>
