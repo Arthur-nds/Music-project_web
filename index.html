@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <style>
-        .sidebar-menu .menu-home {
+        .menu-focus {
             background-color: #3366CC;
         }
     </style>
@@ -23,40 +23,43 @@
         </div>
         <nav class="sidebar-menu">
             <ul>
-                <li class="menu-home">
+                <li class="menu-focus">
                     <span class="material-symbols-outlined">home</span>
-                    <a href="#">Início</a>
+                    <a href="index.html">Início</a>
                 </li>
                 <li>
                     <span class="material-symbols-outlined">calendar_month</span>
-                    <a href="#">Escalas</a>
+                    <a href="escalas.html">Escalas</a>
                 </li>
                 <li>
                     <span class="material-symbols-outlined">schedule</span>
-                    <a href="#">Ensaios</a>
+                    <a href="ensaios.html">Ensaios</a>
                 </li>
                 <li>
                     <span class="material-symbols-outlined">library_music</span>
-                    <a href="#">Músicas</a>
+                    <a href="musicas.html">Músicas</a>
                 </li>
                 <li>
                     <span class="material-symbols-outlined">account_circle</span>
-                    <a href="#">Perfil</a>
+                    <a href="perfil.html">Perfil</a>
                 </li>
                 <li>
                     <span class="material-symbols-outlined">notifications</span>
-                    <a href="#">Notificações</a>
+                    <a href="notifications.html">Notificações</a>
                 </li>
             </ul>
             <div class="exit">
-                <div><span class="material-symbols-outlined">logout</span><a href="#">Sair</a></div>
+                <div><span class="material-symbols-outlined">logout</span><a href="login.html">Sair</a></div>
             </div>
         </nav>
     </aside>
 
     <header>
-        <h1>Seja bem-vindo!</h1>
-        <p>Membro do Louvor</p>
+        <div class="page-title">
+            <h1>Seja bem-vindo!</h1>
+            <p>Membro do Louvor</p>
+        </div>
+
     </header>
 
     <main>
@@ -98,25 +101,23 @@
                 </header>
                 <div class="itens">
                     <article class="item">
-                        <div>
-                            <p class="escala-title">Culto de celebração</p>
-                            <p class="n-musicas">5 músicas</p>
-                        </div>  
-                        <button class="escalas-item-details">
-                            Detalhes
-                        </button>
+                        <p class="item-title">Culto de celebração</p>
+                        <div class="item-time-count">0 dia(s)</div>
+                        <div class="item-info">
+                            <span class="n-musicas">5 músicas</span>
+                        </div>
+                        <button class="item-details">Detalhes</button>
                     </article>
                     <article class="item">
-                        <div>
-                            <p class="item-title">Noite de glória</p>
-                            <p class="n-musicas">4 músicas</p>
-                        </div>  
-                        <button class="escalas-item-details">
-                            Detalhes
-                        </button>
+                        <p class="item-title">Noite de Glória</p>
+                        <div class="item-time-count">0 dia(s)</div>
+                        <div class="item-info">
+                            <span class="n-musicas">5 músicas</span>
+                        </div>
+                        <button class="item-details">Detalhes</button>
                     </article>
                 </div>
-                <a href="#" class="escalas-all">
+                <a href="#" class="view-all">
                     Ver todas as escalas
                 </a>
             </section>
@@ -128,12 +129,14 @@
                 <div class="itens">
                     <article class="item">
                         <p class="item-title">Nova escala lançada</p>
-                        <p class="notification-time">
+                        <div class="notification-time">
                             <span class="data">10/11/2025</span>
+                            -
                             <span class="hora">10:00</span>
-                        </p>
+                        </div>
                     </article>
                 </div>
+                <a href="#" class="view-all">Ver todas as notificações</a>
             </section>
             <section class="ensaios">
                 <header>
@@ -143,27 +146,27 @@
                 <div class="itens">
                     <article class="item">
                         <p class="item-title">Ensaio geral</p>
-                        <div class="time">0 dia(s)</div>
-                        <div class="info">
+                        <div class="item-time-count">0 dia(s)</div>
+                        <div class="item-info">
                             <span class="data-hora">Data: 20/11/2025</span>
                             <span class="horario">Horário: 19h</span>
                             <span class="escala">Escala: 23/11/2025</span>
                         </div>
-                        <!-- <div class="details"><button>Mais detalhes</button></div> -->
-                         <button class="details">Detalhes</button>
+                        <button class="item-details">Detalhes</button>
                     </article>
                     <article class="item">
                         <p class="item-title">Ensaio geral</p>
-                        <div class="time">0 dia(s)</div>
-                        <div class="info">
+                        <div class="item-time-count">0 dia(s)</div>
+                        <div class="item-info">
                             <span class="data-hora">Data: 20/11/2025</span>
                             <span class="horario">Horário: 19h</span>
                             <span class="escala">Escala: 23/11/2025</span>
                         </div>
                         <!-- <div class="details"><button>Mais detalhes</button></div> -->
-                        <button class="details">Detalhes</button>
+                        <button class="item-details">Detalhes</button>
                     </article>
                 </div>
+                <a href="#" class="view-all">Ver ensaios marcados</a>
             </section>
         </section>
     </main>

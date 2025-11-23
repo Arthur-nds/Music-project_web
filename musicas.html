@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Músicas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+        .menu-focus {
+            background-color: #3366CC;
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-title">
+            <img src="assets/icones/project-icon.png" alt="Logo do projeto">
+            <h1>Project music</h1>
+        </div>
+        <nav class="sidebar-menu">
+            <ul>
+                <li>
+                    <span class="material-symbols-outlined">home</span>
+                    <a href="index.html">Início</a>
+                </li>
+                <li>
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <a href="escalas.html">Escalas</a>
+                </li>
+                <li>
+                    <span class="material-symbols-outlined">schedule</span>
+                    <a href="ensaios.html">Ensaios</a>
+                </li>
+                <li class="menu-focus">
+                    <span class="material-symbols-outlined">library_music</span>
+                    <a href="musicas.html">Músicas</a>
+                </li>
+                <li>
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <a href="perfil.html">Perfil</a>
+                </li>
+                <li>
+                    <span class="material-symbols-outlined">notifications</span>
+                    <a href="notifications.html">Notificações</a>
+                </li>
+            </ul>
+            <div class="exit">
+                <div><span class="material-symbols-outlined">logout</span><a href="login.html">Sair</a></div>
+            </div>
+        </nav>
+    </aside>
+
+    <header>
+        <div class="page-title">
+            <h1>Músicas</h1>
+            <p>Repertório completo do Geração de Davi</p>
+        </div>
+        <!-- <div class="box-add-music">
+            <span class="material-symbols-outlined">add</span>
+            <button class="add-music">Adicionar música</button>
+        </div> -->
+        <button class="add-music">
+            <span class="material-symbols-outlined">add</span> 
+            Adicionar música
+        </button>
+        
+    </header>
+
+    <main>
+        <h2>Repertório completo</h2>
+        <form>
+            <label for="nome">Nome de música:</label>
+            <br>
+            <input class="input-search" type="text" name="nome" id="musicName">
+        </form>
+        <section class="music-list">
+            <article class="item">
+                <div class="item-title">Ousado Amor</div>
+                <div class="item-info">a</div>
+            </article>
+        </section>
+
+
+    </main>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
