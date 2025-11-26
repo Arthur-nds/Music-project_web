@@ -1,0 +1,89 @@
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: "Montserrat", sans-serif;
+    color: #020822;
+    /* Layout */
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+        "sidebar header"
+        "sidebar main"
+    ;
+}
+
+
+header {
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    /* padding: 2rem; */
+    grid-area: header;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #003399;
+    color: #fff;
+    padding: 2rem;
+}
+
+.sidebar a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+}
+
+.sidebar-title {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-title h1 {
+    font-size: 16pt;
+} 
+
+.sidebar-title img {
+    width: 32px;
+}
+
+.sidebar-menu a, .exit a {
+    padding: .5rem .75rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border-radius: .75rem;
+    transition: background-color .3s ease;
+}
+
+.sidebar-menu a:hover, .exit div:hover {
+    background-color: #002265;
+    cursor: pointer;
+}
+
+.sidebar-menu .exit {
+    border-top: 1px solid #c3c3c3;
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+
+.sidebar-menu .exit div {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    transition: background-color .3s ease;
+}
+
+main {   
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+

@@ -1,0 +1,57 @@
+button {
+    font-family: "Montserrat", sans-serif;
+}
+
+.btn-details {
+    background-color: #fafafa;
+    color: #020822;
+    border: 1px solid #c3c3c3;
+    font-weight: 500;
+    padding: .5rem;
+    border-radius: .5rem;
+    transition: background-color .2s ease;
+}
+
+.btn-details:hover {
+    cursor: pointer;
+    background-color: #002265;
+    color: #fff;
+}
+
+.btn-view {
+    border: 1px solid #c3c3c3;
+    padding: .75rem;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #020822;
+    font-weight: 500;
+    transition: background-color .2s ease;
+}
+
+.btn-view:hover {
+    background-color: #002265;
+    color: #fff;
+    cursor: pointer;
+}
+
+.add {
+    width: fit-content;
+    border: none;
+    background-color: #003399;
+    color: #fff;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem .5rem 1rem .5rem;
+    font-weight: 600;
+    transition: box-shadow .2s ease;
+}
+
+.add:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px #020822;
+}

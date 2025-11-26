@@ -7,6 +7,10 @@
     <title>Projeto web</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/home.css">
     <style>
         .menu-focus {
             background-color: #3366CC;
@@ -22,34 +26,14 @@
             <h1>Project music</h1>
         </div>
         <nav class="sidebar-menu">
-            <ul>
-                <li class="menu-focus">
-                    <span class="material-symbols-outlined">home</span>
-                    <a href="index.html">Início</a>
-                </li>
-                <li>
-                    <span class="material-symbols-outlined">calendar_month</span>
-                    <a href="escalas.html">Escalas</a>
-                </li>
-                <li>
-                    <span class="material-symbols-outlined">schedule</span>
-                    <a href="ensaios.html">Ensaios</a>
-                </li>
-                <li>
-                    <span class="material-symbols-outlined">library_music</span>
-                    <a href="musicas.html">Músicas</a>
-                </li>
-                <li>
-                    <span class="material-symbols-outlined">account_circle</span>
-                    <a href="perfil.html">Perfil</a>
-                </li>
-                <li>
-                    <span class="material-symbols-outlined">notifications</span>
-                    <a href="notifications.html">Notificações</a>
-                </li>
-            </ul>
+            <a href="index.html" class="menu-focus"><span class="material-symbols-outlined">home</span>Início</a>
+            <a href="escalas.html"><span class="material-symbols-outlined">calendar_month</span>Escalas</a>
+            <a href="ensaios.html"><span class="material-symbols-outlined">schedule</span>Ensaios</a>
+            <a href="musicas.html"><span class="material-symbols-outlined">library_music</span>Músicas</a>
+            <a href="perfil.html"><span class="material-symbols-outlined">account_circle</span>Perfil</a>
+            <a href="notifications.html"><span class="material-symbols-outlined">notifications</span>Notificações</a>
             <div class="exit">
-                <div><span class="material-symbols-outlined">logout</span><a href="login.html">Sair</a></div>
+                <a href="login.html"><span class="material-symbols-outlined">logout</span>Sair</a>
             </div>
         </nav>
     </aside>
@@ -82,7 +66,7 @@
                 <div class="card-header">
                     <p>Ensaios pendentes</p>
                     <span class="material-symbols-outlined">schedule</span>
-                </div>
+                </div><link rel="stylesheet" href="style.css">
                 <span class="card-cont">0</span>
             </article>
             <article class="card-musicas">
@@ -106,7 +90,7 @@
                         <div class="item-info">
                             <span class="n-musicas">5 músicas</span>
                         </div>
-                        <button class="item-details">Detalhes</button>
+                        <button class="btn-details">Detalhes</button>
                     </article>
                     <article class="item">
                         <p class="item-title">Noite de Glória</p>
@@ -114,10 +98,10 @@
                         <div class="item-info">
                             <span class="n-musicas">5 músicas</span>
                         </div>
-                        <button class="item-details">Detalhes</button>
+                        <button class="btn-details">Detalhes</button>
                     </article>
                 </div>
-                <a href="#" class="view-all">
+                <a href="#" class="btn-view">
                     Ver todas as escalas
                 </a>
             </section>
@@ -136,7 +120,7 @@
                         </div>
                     </article>
                 </div>
-                <a href="#" class="view-all">Ver todas as notificações</a>
+                <a href="#" class="btn-view">Ver todas as notificações</a>
             </section>
             <section class="ensaios">
                 <header>
@@ -152,7 +136,7 @@
                             <span class="horario">Horário: 19h</span>
                             <span class="escala">Escala: 23/11/2025</span>
                         </div>
-                        <button class="item-details">Detalhes</button>
+                        <button class="btn-details">Detalhes</button>
                     </article>
                     <article class="item">
                         <p class="item-title">Ensaio geral</p>
@@ -163,10 +147,10 @@
                             <span class="escala">Escala: 23/11/2025</span>
                         </div>
                         <!-- <div class="details"><button>Mais detalhes</button></div> -->
-                        <button class="item-details">Detalhes</button>
+                        <button class="btn-details">Detalhes</button>
                     </article>
                 </div>
-                <a href="#" class="view-all">Ver ensaios marcados</a>
+                <a href="#" class="btn-view">Ver ensaios marcados</a>
             </section>
         </section>
     </main>

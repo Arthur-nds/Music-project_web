@@ -1,0 +1,90 @@
+
+.cards {
+    flex-grow: 0;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+}
+
+.cards article {
+    height: 7rem;
+    border: 1px solid #c3c3c3;
+    border-radius: .75rem;
+    padding: 1rem;
+    line-height: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cards .material-symbols-outlined {
+    color: #64748b;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-cont {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.main-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.main-box section {
+    border: 1px solid #c3c3c3;
+    border-radius: .75rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.itens {
+    flex-grow: 1;
+}
+
+.item {
+    background-color: #fafafa;
+    border: 1px solid #c3c3c3;
+    border-radius: .5rem;
+    padding: 1rem;
+    margin: .5rem 0 ;
+    /* Layout */
+    display: grid;
+    grid-template-columns: 1fr auto;
+    /* row-gap: .5rem; */
+}
+
+.item-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.main-box section header {
+    line-height: 1.5rem;
+    padding: 0;
+}
+
+.item-title {
+    font-weight: 600;
+}
+
+
+
+.item-time-count {
+    font-weight: bold;
+    color: #003399;
+    display: flex;
+    justify-content: end;
+}
