@@ -6,13 +6,3 @@
 .notification-time {
     color: #64748b;  
 }
-
-/* Page: musicas.html */
-
-
-
-.music-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-}

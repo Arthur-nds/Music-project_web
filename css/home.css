@@ -49,27 +49,7 @@
     justify-content: space-between;
 }
 
-.itens {
-    flex-grow: 1;
-}
 
-.item {
-    background-color: #fafafa;
-    border: 1px solid #c3c3c3;
-    border-radius: .5rem;
-    padding: 1rem;
-    margin: .5rem 0 ;
-    /* Layout */
-    display: grid;
-    grid-template-columns: 1fr auto;
-    /* row-gap: .5rem; */
-}
-
-.item-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
 
 .main-box section header {
     line-height: 1.5rem;
@@ -80,11 +60,9 @@
     font-weight: 600;
 }
 
-
-
 .item-time-count {
     font-weight: bold;
     color: #003399;
     display: flex;
-    justify-content: end;
+    justify-content: center;
 }
