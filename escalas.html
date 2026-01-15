@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto web</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <!-- <link rel="stylesheet" href="css/home.css"> -->
+    <link rel="stylesheet" href="css/escalas.css">
+    <style>
+        .menu-focus {
+            background-color: #3366CC;
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-title">
+            <img src="assets/icones/project-icon.png" alt="Logo do projeto">
+            <h1>Project music</h1>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html"><span class="material-symbols-outlined">home</span>Início</a>
+            <a href="escalas.html" class="menu-focus"><span
+                    class="material-symbols-outlined">calendar_month</span>Escalas</a>
+            <a href="ensaios.html"><span class="material-symbols-outlined">schedule</span>Ensaios</a>
+            <a href="musicas.html"><span class="material-symbols-outlined">library_music</span>Músicas</a>
+            <a href="perfil.html"><span class="material-symbols-outlined">account_circle</span>Perfil</a>
+            <a href="notifications.html"><span class="material-symbols-outlined">notifications</span>Notificações</a>
+            <div class="exit">
+                <a href="login.html"><span class="material-symbols-outlined">logout</span>Sair</a>
+            </div>
+        </nav>
+    </aside>
+
+    <header>
+        <h1>Escalas</h1>
+        <p>Lista de escalas do ministério</p>
+    </header>
+
+    <main>
+        <div class="section-title">
+            <span class="material-symbols-outlined">
+                calendar_check
+            </span>
+            <h2>Lista de escalas agendadas</h2>
+        </div>
+        <section class="lista-escalas">
+            <article class="item">
+                <header>
+                    <h3>Culto de ensino - 17 de dezembro de 2025</h3>
+                    <p>Ministro: nome</p>
+                </header>
+
+                <div class="escala-equipe">
+                    <h3><span class="material-symbols-outlined">group</span> Equipe</h3>
+                    <span class="membro-equipe">
+                        Membro 1 - violão
+                    </span>
+                    <span class="membro-equipe">
+                        Membro 2 - Guitarra
+                    </span>
+                    <span class="membro-equipe">
+                        Membro 3 - Vocal
+                    </span>
+                    <span class="membro-equipe">
+                        Membro 4 - Vocal
+                    </span>
+                    <span class="membro-equipe">
+                        Membro 5 - Vocal
+                    </span>
+                    <span class="membro-equipe">
+                        Membro 6 - Bateria
+                    </span>
+                    <span class="membro-equipe">
+                        Membro 7 - Baixo
+                    </span>
+                    <span class="membro-equipe">
+                        Membro 8 - Teclado
+                    </span>
+                </div>
+                <div class="repertorio">
+                    <h3>Repertório</h3>
+                    <div class="musica">
+                        1. Os Planos de Deus - Samuel Messias
+                        <span class="tom">C</span>
+                        <span class="bpm">60 BPM</span>
+                    </div>
+                    <div class="musica">
+                        2. Êxodo - Projeto Sola
+                        <span class="tom">C</span>
+                        <span class="bpm">60 BPM</span>
+                    </div>
+                    <div class="musica">
+                        3. Bondade de Deus - Isaías Saad
+                        <span class="tom">C</span>
+                        <span class="bpm">60 BPM</span>
+                    </div>
+                    <div class="musica">
+                        4. Em Teus Braços - Laura Souguellis
+                        <span class="tom">C</span>
+                        <span class="bpm">60 BPM</span>
+                    </div>
+                    <div class="musica">
+                        5. Me Ama - Diante do Trono
+                        <span class="tom">C</span>
+                        <span class="bpm">60 BPM</span>
+                    </div>
+
+                </div>
+                <footer>
+                    <button class="btn-view">Ver detalhes</button>
+                    <button class="edit btn-item">Editar</button>
+                </footer>
+
+            </article>
+        </section>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

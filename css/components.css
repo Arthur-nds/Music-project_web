@@ -22,6 +22,7 @@ button {
 
 .btn-view {
     flex-grow: 0;
+    background-color: #fff;
     border: 1px solid #c3c3c3;
     padding: .5rem;
     border-radius: .5rem;

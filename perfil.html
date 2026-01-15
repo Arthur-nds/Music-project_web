@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto web</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pefil.css">
+    <style>
+        .menu-focus {
+            background-color: #3366CC;
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-title">
+            <img src="assets/icones/project-icon.png" alt="Logo do projeto">
+            <h1>Project music</h1>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html"><span class="material-symbols-outlined">home</span>Início</a>
+            <a href="escalas.html"><span class="material-symbols-outlined">calendar_month</span>Escalas</a>
+            <a href="ensaios.html"><span class="material-symbols-outlined">schedule</span>Ensaios</a>
+            <a href="musicas.html"><span class="material-symbols-outlined">library_music</span>Músicas</a>
+            <a href="perfil.html" class="menu-focus"><span
+                    class="material-symbols-outlined">account_circle</span>Perfil</a>
+            <a href="notifications.html"><span class="material-symbols-outlined">notifications</span>Notificações</a>
+            <div class="exit">
+                <a href="login.html"><span class="material-symbols-outlined">logout</span>Sair</a>
+            </div>
+        </nav>
+    </aside>
+
+    <header>
+        <h1>Perfil de usuário</h1>
+        <p>Membro do Louvor</p>
+    </header>
+
+    <main>
+        <section class="perfil item">
+            <header>
+                <h2>Informações pessoais</h2>
+                <p>Dados de cadastro</p>
+            </header>
+            <label for="usuario">Nome </label>
+            <input type="text" id="usuario">
+            <label for="dataNasc">Data de Nascimento </label>
+            <input type="date" id="dataNasc">
+            <label for="email">Email</label>
+            <input type="email" id="email">
+            <div class="habilidades">
+                <h3>Habilidades</h3>
+                <span>Violão</span>
+                <span>Teclado</span>
+                <button class="btn-item">Adicionar habilidade</button>
+            </div>
+            <button class="add">Salvar alterações</button>
+        </section>
+
+        <section class="status item">
+            <header>
+                <h1>
+                    <span class="material-symbols-outlined">badge</span>
+                    Status
+                </h1>
+            </header>
+            <p>Membro do louvor</p>
+        </section>
+
+        <section class="estatisticas item">
+            <header>
+                <h1>
+                    <span class="material-symbols-outlined">monitoring</span>
+                    Estatísticas
+                </h1>
+            </header>
+            <div class="total-escalas">
+                <p>Total de escalas</p>
+                <span class="num">3</span>
+            </div>
+
+            <div class="escalas-final">
+                <p>Escalas finalizadas</p>
+                <span class="num">3</span>
+            </div>
+
+            <div class="prox-escalas">
+                <p>Próximas escalas</p>
+                <span class="num">3</span>
+            </div>
+        </section>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
