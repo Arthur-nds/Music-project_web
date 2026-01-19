@@ -36,13 +36,13 @@ body > header {
     color: #fff;
 }
 
-.sidebar-title {
+.sidebar > header {
     margin-bottom: 2rem;
     padding: .5rem .75rem;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    justify-content: space-between;
+    gap: 1rem;
 }
 
 .sidebar-title h1 {

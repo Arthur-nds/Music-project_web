@@ -66,12 +66,18 @@ button {
     font-weight: 500;
 }
 
-.status > p {
+
+.cargos {
+    margin-top: 1.5rem;
+}
+
+.cargos > p {
     background-color: #003399;
     font-weight: 800;
     color: #fff;
-    padding: 1rem;
+    padding: .5rem;
     text-align: center;
     border-radius: 5rem;
-    font-size: 1.4rem;
+    width: fit-content;
+    
 }
