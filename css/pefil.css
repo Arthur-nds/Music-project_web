@@ -55,3 +55,23 @@ label {
 button {
     padding: .25rem .5rem .25rem .5rem;
 }
+
+.num {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #757272;
+}
+
+.estatisticas > div {
+    font-weight: 500;
+}
+
+.status > p {
+    background-color: #003399;
+    font-weight: 800;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 5rem;
+    font-size: 1.4rem;
+}
