@@ -16,6 +16,10 @@ main {
 
 }
 
+input[type="date"] {
+    width: fit-content;
+}
+
 input {
     border: 1px solid #c3c3c3;
     padding: 1rem;

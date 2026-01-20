@@ -45,6 +45,10 @@
     </header>
 
     <main>
+        <button class="add" id="addEnsaios">
+            <span class="material-symbols-outlined">add</span>
+            Nova Escala
+        </button>
         <header>
             
             <h2>
@@ -141,6 +145,55 @@
         </section>
 
     </main>
+    <template id="addMusic-template">
+        <div class="glass pop-up">
+            <div class="crud-box form-add-music">
+                <header>
+                    <span class="material-symbols-outlined">
+                        music_note_add
+                    </span>
+                    <h2>Nova Música</h2>
+                </header>
+                <form>
+                    <div class="form-field">
+                        <label for="titleMusic">Título da música</label>
+                        <input type="text" id="titleMusic">
+                    </div>
+                    <div class="form-field">
+                        <label for="linkCifra">Link da cifra</label>
+                        <input type="text" id="linkCifra">
+                    </div>
+                    <div class="form-field">
+                        <label for="tomMusic">Tonalidade</label>
+                        <input type="text" id="tomMusic">
+                    </div>
+                    <div class="form-field">
+                        <label for="linkLetra">Link da letra</label>
+                        <input type="text" id="linkLetra">
+                    </div>
+                    <div class="form-field">
+                        <label for="nomeArtista">Artista</label>
+                        <input type="text" id="nomeArtista">
+                    </div>
+                    <div class="form-field">
+                        <label for="bpmMusica">Tempo (BPM)</label>
+                        <input type="number" id="bpmMusica">
+                    </div>
+                    <div class="form-field">
+                        <label for="linkOriginal">Link da versão original</label>
+                        <input type="text" id="linkOriginal">
+                    </div>
+                </form>
+                <div class="close-crud">
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+                </div>
+                <button class="add">Salvar</button>
+            </div>
+        </div>
+    </template>
+    
     <script src="js/main.js"></script>
 </body>
 

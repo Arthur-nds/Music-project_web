@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/musicas.css">
+    <link rel="stylesheet" href="css/utils.css">
     <style>
         .menu-focus {
             background-color: #3366CC;
@@ -51,7 +52,12 @@
             <span class="material-symbols-outlined">add</span>
             Adicionar música
         </button>
-        <h2>Repertório completo</h2>
+        <header>
+            <h2>
+                <span class="material-symbols-outlined">library_music</span>
+                Repertório completo
+            </h2>
+        </header>
         <form>
             <label for="nome">Nome de música:</label>
             <br>
@@ -175,6 +181,54 @@
 
 
     </main>
+    <template id="addMusic-template">
+        <div class="glass pop-up">
+            <div class="crud-box form-add-music">
+                <header>
+                    <span class="material-symbols-outlined">
+                        music_note_add
+                    </span>
+                    <h2>Nova Música</h2>
+                </header>
+                <form>
+                    <div class="form-field">
+                        <label for="titleMusic">Título da música</label>
+                        <input type="text" id="titleMusic">
+                    </div>
+                    <div class="form-field">
+                        <label for="linkCifra">Link da cifra</label>
+                        <input type="text" id="linkCifra">
+                    </div>
+                    <div class="form-field">
+                        <label for="tomMusic">Tonalidade</label>
+                        <input type="text" id="tomMusic">
+                    </div>
+                    <div class="form-field">
+                        <label for="linkLetra">Link da letra</label>
+                        <input type="text" id="linkLetra">
+                    </div>
+                    <div class="form-field">
+                        <label for="nomeArtista">Artista</label>
+                        <input type="text" id="nomeArtista">
+                    </div>
+                    <div class="form-field">
+                        <label for="bpmMusica">Tempo (BPM)</label>
+                        <input type="number" id="bpmMusica">
+                    </div>
+                    <div class="form-field">
+                        <label for="linkOriginal">Link da versão original</label>
+                        <input type="text" id="linkOriginal">
+                    </div>
+                </form>
+                <div class="close-crud">
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+                </div>
+                <button class="add">Salvar</button>
+            </div>
+        </div>
+    </template>
     <script src="js/main.js"></script>
 </body>
 
