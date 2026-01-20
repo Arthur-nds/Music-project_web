@@ -152,7 +152,67 @@
             </section>
         </section>
     </main>
-    
+    <div class="glass pop-up">
+            <div class="crud-box form-add-ensaio">
+                <header>
+                    <span class="material-symbols-outlined">calendar_check</span>
+                    <h2>Agendar ensaio</h2>
+                </header>
+                <form>
+                    <div class="form-field">
+                        <label for="titleEnsaio">
+                            <span class="material-symbols-outlined">titlecase</span>
+                                Título
+                            </label>
+                        <input type="text" id="titleEnsaio">
+                    </div>
+                    <div class="form-field">
+                        <label for="dataEnsaio">
+                            <span class="material-symbols-outlined">calendar_month</span>
+                            Data
+                        </label>
+                        <input type="date" id="dataEnsaio">
+                    </div>
+                    <div class="form-field">
+                        <label for="localEnsaio">
+                            <span class="material-symbols-outlined">location_on</span>
+                            Local
+                        </label>
+                        <input type="text" id="localEnsaio">
+                    </div>
+                    <div class="form-field">
+                        <label for="horarioEnsaio">
+                            <span class="material-symbols-outlined">schedule</span>
+                            Horário
+                        </label>
+                        <input type="text" id="horarioEnsaio">
+                    </div>
+                    <div class="form-field">
+                        <label for="equipeEnsaio">
+                            <span class="material-symbols-outlined">group</span>
+                            Equipe
+                        </label>
+                        <input type="text" id="equipeEnsaio">
+                    </div>
+                    <div class="form-field">
+                        <label for="repertorioEnsaio">
+                            <span class="material-symbols-outlined">queue_music</span>
+                            Repertorio
+                        </label>
+                        <input type="text" id="repertorioEnsaio" class="searchList">
+                        <div class="listRepertorio">
+                            <div class="item"></div>
+                        </div>
+                    </div>
+                </form>
+                <div class="close-crud">
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+                </div>
+                <button class="add">Salvar</button>
+            </div>
+        </div>
     <script src="js/main.js"></script>
 </body>
 
