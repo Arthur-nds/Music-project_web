@@ -19,7 +19,7 @@ btn.addEventListener('click', () =>{
     console.log(lista);
     localStorage.setItem('musicas', JSON.stringify(lista));
 }); */
-function buscarLista(ch) {
+export function buscarLista(ch) {
     let res = localStorage.getItem(ch);
     return JSON.parse(res);
 }
@@ -32,3 +32,4 @@ export function salvar(ch, objeto) {
     lista.push(objeto);
     localStorage.setItem(ch, JSON.stringify(lista));
 }
+

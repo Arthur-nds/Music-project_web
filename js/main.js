@@ -1,4 +1,4 @@
-import { salvarMusica } from "./services/musicaService.js";
+import { buscarLista } from "./api.js";
 
 // Manipulação do DOM --> musicas.html
 const addMusic = document.querySelector("#addMusic");
@@ -24,6 +24,27 @@ if (addMusic != null) {
     });
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    let listaMusicas = buscarLista("musicas");
+    const sectionMusica = document.querySelector('.music-list');
+    const templateItem = document.querySelector('#itemMusic');
+    const itemMusic = templateItem.content.cloneNode(true);
+    console.log(itemMusic);
+    listaMusicas.forEach((musica) => {
+        console.log(musica);
+    });
+});
+
+
+// Gerando elementos músicas
+const searchMusic = document.querySelector('#musicName');
+searchMusic.addEventListener('input', () =>{
+    window.alert("OK");
+});
+
+function desenharMusicas(obj) {
+    
+}
 
 
 // Manipulação do DOM --> Ensaios

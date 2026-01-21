@@ -45,6 +45,12 @@ main > header > h2{
     color: #020822;
 }
 
+.music-info {
+    display: flex;
+    justify-content: end;
+    align-items: flex-start;
+}
+
 .music-info span {
     border: 1px solid #c3c3c3;
     padding: .25rem;
