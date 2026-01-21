@@ -22,3 +22,7 @@ h2, h3 {
     font-size: .80rem;
     font-weight: 500;
 }
+
+.crud-box form {
+    grid-template-columns: repeat(2, 1fr);
+}

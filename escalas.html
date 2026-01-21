@@ -46,6 +46,10 @@
     </header>
 
     <main>
+        <button class="add" id="addEscalas">
+            <span class="material-symbols-outlined">add</span>
+            Adicionar escala
+        </button>
         <div class="section-title">
             <span class="material-symbols-outlined">
                 calendar_check
@@ -123,7 +127,55 @@
             </article>
         </section>
     </main>
-    <script src="js/main.js"></script>
+    <template id="addEscalas-template">
+        <div class="glass pop-up">
+            <div class="crud-box form-add-ensaio">
+                <header>
+                    <span class="material-symbols-outlined">calendar_check</span>
+                    <h2>Nova escala</h2>
+                </header>
+                <form>
+                    <div class="form-field">
+                        <label for="titleEnsaio">
+                            <span class="material-symbols-outlined">titlecase</span>
+                            Título
+                        </label>
+                        <input type="text" id="titleEscala">
+                    </div>
+                    <div class="form-field">
+                        <label for="dataEscala">
+                            <span class="material-symbols-outlined">calendar_month</span>
+                            Data
+                        </label>
+                        <input type="date" id="dataEscala">
+                    </div>
+                    <div class="form-field">
+                        <label for="equipeEscala">
+                            <span class="material-symbols-outlined">group</span>
+                            Equipe
+                        </label>
+                        <input type="text" id="equipeEscala">
+                    </div>
+                    <div class="form-field fieldList">
+                        <label for="repertorioEscala">
+                            <span class="material-symbols-outlined">queue_music</span>
+                            Repertorio
+                        </label>
+                        <input type="text" id="repertorioEscala">
+                        <div class="boxList">
+                        </div>
+                    </div>
+                </form>
+                <div class="close-crud">
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+                </div>
+                <button class="add">Salvar</button>
+            </div>
+        </div>
+    </template>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

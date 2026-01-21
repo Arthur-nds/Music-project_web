@@ -67,6 +67,30 @@
             </div>
         </form>
         <section class="music-list">
+            <template id="itemMusic">
+                <article class="box-music item">
+                <header class="music-title">
+                    <h3>Nome da música</h3>
+                    <p>Artista</p>
+                </header>
+                <div class="music-info">
+                    <span class="tom">C</span>
+                    <span class="bpm">60 BPM</span>
+                </div>
+                <div class="music-links">
+                    <h4>Links:</h4>
+                    <span class="cifra"><a href="#" target="_blank" rel="noopener noreferrer">Cifra</a></span>
+                    <span class="letra"><a href="#" target="_blank" rel="noopener noreferrer">Letra</a></span>
+                    <div class="original-version btn-view">
+                        <span class="material-symbols-outlined">open_in_new</span>
+                        Ver original
+                    </div>
+                </div>
+                <div class="edit-music">
+                    <button class="btn-item">Editar</button>
+                </div>
+            </article>
+            </template>
             <article class="box-music item">
                 <header class="music-title">
                     <h3>Nome da música</h3>
@@ -190,7 +214,7 @@
                     </span>
                     <h2>Nova Música</h2>
                 </header>
-                <form>
+                <form class="formularioTEste">
                     <div class="form-field">
                         <label for="titleMusic">Título da música</label>
                         <input type="text" id="titleMusic">
@@ -225,11 +249,11 @@
                         close
                     </span>
                 </div>
-                <button class="add">Salvar</button>
+                <button class="add" id="save">Salvar</button>
             </div>
         </div>
     </template>
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

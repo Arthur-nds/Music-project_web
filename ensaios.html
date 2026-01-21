@@ -29,7 +29,7 @@
         <nav class="sidebar-menu">
             <a href="index.html"><span class="material-symbols-outlined">home</span>Início</a>
             <a href="escalas.html"><span class="material-symbols-outlined">calendar_month</span>Escalas</a>
-            <a href="ensaios.html"  class="menu-focus"><span class="material-symbols-outlined">schedule</span>Ensaios</a>
+            <a href="ensaios.html" class="menu-focus"><span class="material-symbols-outlined">schedule</span>Ensaios</a>
             <a href="musicas.html"><span class="material-symbols-outlined">library_music</span>Músicas</a>
             <a href="perfil.html"><span class="material-symbols-outlined">account_circle</span>Perfil</a>
             <!-- <a href="notifications.html"><span class="material-symbols-outlined">notifications</span>Notificações</a> -->
@@ -50,7 +50,7 @@
             Agendar ensaio
         </button>
         <header>
-            
+
             <h2>
                 <span class="material-symbols-outlined">event_available</span>
                 Lista de ensaios agendados
@@ -66,7 +66,7 @@
                 <div class="data music-info">
                     <h3>
                         <span class="material-symbols-outlined">event</span>
-                        Data -  
+                        Data -
                     </h3>
                     <span class="data-marcada"> &nbsp;10 de janeiro de 2026</span>
                 </div>
@@ -74,7 +74,7 @@
                 <div class="local music-info">
                     <h3>
                         <span class="material-symbols-outlined">location_on</span>
-                        Local - 
+                        Local -
                     </h3>
                     <span class="local-marcado">&nbsp;Congregação aureny 1</span>
                 </div>
@@ -145,43 +145,59 @@
         </section>
 
     </main>
-    <template id="addMusic-template">
+    <template id="addEnsaios-template">
         <div class="glass pop-up">
-            <div class="crud-box form-add-music">
+            <div class="crud-box form-add-ensaio">
                 <header>
-                    <span class="material-symbols-outlined">
-                        music_note_add
-                    </span>
-                    <h2>Nova Música</h2>
+                    <span class="material-symbols-outlined">calendar_check</span>
+                    <h2>Agendar ensaio</h2>
                 </header>
                 <form>
                     <div class="form-field">
-                        <label for="titleMusic">Título da música</label>
-                        <input type="text" id="titleMusic">
+                        <label for="titleEnsaio">
+                            <span class="material-symbols-outlined">titlecase</span>
+                            Título
+                        </label>
+                        <input type="text" id="titleEnsaio">
                     </div>
                     <div class="form-field">
-                        <label for="linkCifra">Link da cifra</label>
-                        <input type="text" id="linkCifra">
+                        <label for="dataEnsaio">
+                            <span class="material-symbols-outlined">calendar_month</span>
+                            Data
+                        </label>
+                        <input type="date" id="dataEnsaio">
                     </div>
                     <div class="form-field">
-                        <label for="tomMusic">Tonalidade</label>
-                        <input type="text" id="tomMusic">
+                        <label for="localEnsaio">
+                            <span class="material-symbols-outlined">location_on</span>
+                            Local
+                        </label>
+                        <input type="text" id="localEnsaio">
                     </div>
                     <div class="form-field">
-                        <label for="linkLetra">Link da letra</label>
-                        <input type="text" id="linkLetra">
+                        <label for="horarioEnsaio">
+                            <span class="material-symbols-outlined">schedule</span>
+                            Horário
+                        </label>
+                        <input type="time" id="horarioEnsaio">
                     </div>
                     <div class="form-field">
-                        <label for="nomeArtista">Artista</label>
-                        <input type="text" id="nomeArtista">
+                        <label for="equipeEnsaio">
+                            <span class="material-symbols-outlined">group</span>
+                            Equipe
+                        </label>
+                        <input type="text" id="equipeEnsaio">
                     </div>
-                    <div class="form-field">
-                        <label for="bpmMusica">Tempo (BPM)</label>
-                        <input type="number" id="bpmMusica">
-                    </div>
-                    <div class="form-field">
-                        <label for="linkOriginal">Link da versão original</label>
-                        <input type="text" id="linkOriginal">
+                    <div class="form-field fieldList">
+                        <label for="repertorioEnsaio">
+                            <span class="material-symbols-outlined">queue_music</span>
+                            Repertorio
+                        </label>
+                        <input type="text" id="repertorioEnsaio">
+                        <div class="boxList">
+                        </div>
+                        <div class="boxRes">
+                        </div>
                     </div>
                 </form>
                 <div class="close-crud">
@@ -193,8 +209,7 @@
             </div>
         </div>
     </template>
-    
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

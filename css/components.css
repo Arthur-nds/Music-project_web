@@ -2,11 +2,11 @@ button {
     font-family: "Montserrat", sans-serif;
     height: fit-content;
     width: fit-content;
-    border: 1px solid #c3c3c3;
-    border-radius: .5rem;
 }
 
 .btn-item {
+    border-radius: .5rem;
+    border: 1px solid #c3c3c3;
     background-color: #fafafa;
     color: #020822;
     font-weight: 500;
@@ -21,6 +21,8 @@ button {
 }
 
 .btn-view {
+        border-radius: .5rem;
+    border: 1px solid #c3c3c3;
     flex-grow: 0;
     background-color: #fff;
     padding: .5rem;
@@ -61,6 +63,8 @@ button {
 label {
     font-weight: 700;
     font-size: 1.2rem;
+    display: flex;
+    align-items: center;
 }
 
 input {
@@ -87,6 +91,10 @@ input[type="number"] {
 
 }
 
+input[type="date"], input[type="time"] {
+    width: fit-content;
+}
+
 .form-field {
     display: flex;
     flex-direction: column;
@@ -108,8 +116,8 @@ input[type="number"] {
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    width: 85vw;
-    height: 85vh;
+    width: 55vw;
+    height: 75vh;
     border-radius: 1rem;
     border: 1px solid #c3c3c3;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, .5);
@@ -131,6 +139,7 @@ input[type="number"] {
 .crud-box > header {
     display: flex;
     align-items: center;
+    gap: .5rem;
 }
 
 .crud-box form {
@@ -142,3 +151,47 @@ input[type="number"] {
     margin-top: 2.5rem;
     gap: 2rem;
 }
+
+.searchList {
+    padding: .75rem .75rem .25rem .75rem;
+    border: none;
+    border-bottom: 2px solid #002265;
+    border-radius: 0;
+    /* background-color: linear-gradient(#8a8989, #ffffff00, 90deg); */
+
+}
+
+.searchList:focus {
+    box-shadow: none;
+}
+
+.fieldList {
+    position: relative;
+}
+
+.boxList {
+    position:absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 8rem;
+    overflow: auto;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.itemList {
+    margin: 0 .5rem 0 .5rem;
+    padding: .25rem 0;
+    border-bottom: 1px solid #c3c3c3;
+}
+
+.boxRes {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    position: absolute;
+    top: 100%;
+    padding: .5rem;
+}
+
