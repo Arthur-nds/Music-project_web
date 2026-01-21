@@ -92,7 +92,8 @@ abrir index.html
 
 ## 🖼️ Prints e GIFs
 
-> 📸 **Adicione aqui prints ou GIFs da aplicação em funcionamento**
+<img width="1352" height="636" alt="image" src="https://github.com/user-attachments/assets/d8f5bda8-896b-4387-b33d-ccc5da73d961" />
+
 
 Exemplo:
 
