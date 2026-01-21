@@ -109,16 +109,41 @@ Exemplo:
 
 ```
 📁 projeto-musical
- ├── 📁 css
- │   └── style.css
- ├── 📁 js
- │   ├── musica.js
- │   ├── storage.js
- │   ├── api.js
- │   └── main.js
- ├── 📁 docs
- │   └── prints e gifs
- └── index.html
+├── 📁 assets
+│   └── 📁 icons
+│       └── project-icons.png   # Ícone/identidade visual do projeto
+│
+├── 📁 css
+│   ├── base.css
+│   ├── components.css
+│   ├── ensaios.css
+│   ├── escalas.css
+│   ├── home.css
+│   ├── layout.css
+│   ├── musicas.css
+│   ├── notifications.css
+│   ├── perfil.css
+│   ├── style.css
+│   └── utils.css
+│
+├── 📁 js
+│   ├── 📁 services
+│   │   ├── ensaioService.js
+│   │   ├── escalaService.js
+│   │   └── musicaService.js
+│   ├── api.js
+│   └── main.js
+│
+├── cadastro.html
+├── ensaios.html
+├── escalas.html
+├── index.html
+├── login.html
+├── musicas.html
+├── notifications.html
+├── perfil.html
+└── README.md
+
 ```
 
 ---
