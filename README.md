@@ -30,7 +30,7 @@ O tema musical foi escolhido por afinidade pessoal e por permitir trabalhar de f
 ## ✅ Requisitos Atendidos (Checklist)
 
 * [x] **Estruturas básicas** (condicionais, laços e funções)
-* [x] **Objetos e Arrays** com uso de `map`, `filter` e `reduce` (3 ou mais métodos)
+* [] **Objetos e Arrays** com uso de `map`, `filter` e `reduce` (3 ou mais métodos)
 * [x] **Arrow Functions**, incluindo uso em eventos
 * [x] **DOM dinâmico**
 
@@ -41,10 +41,10 @@ O tema musical foi escolhido por afinidade pessoal e por permitir trabalhar de f
 
   * Exibição de estado de carregamento (loading)
   * Tratamento de erros
-* [x] **Promises** usando `.then()` / `.catch()`
-* [x] **Async/Await** com `try/catch`
+* [] **Promises** usando `.then()` / `.catch()`
+* [] **Async/Await** com `try/catch`
 * [x] **Web Storage (LocalStorage)** para persistência de dados
-* [x] **API HTML5 adicional**: `Audio API` (ou outra, conforme implementação)
+* [] **API HTML5 adicional**: `Audio API` (ou outra, conforme implementação)
 * [x] **Responsividade**, semântica HTML e acessibilidade básica
 * [x] **Organização de arquivos** e README completo
 
