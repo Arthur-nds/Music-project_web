@@ -1,30 +1,67 @@
 import { buscarLista } from "./api.js";
 
-// Manipulação do DOM --> musicas.html
-const addMusic = document.querySelector("#addMusic");
-if (addMusic != null) {
-    addMusic.addEventListener('click', () => {
-        const templateForm = document.querySelector('#addMusic-template');
-        const addMusicForm = templateForm.content.cloneNode(true);
-        document.body.appendChild(addMusicForm);
-        // Fechar janela
-        document.querySelector('.close-crud').addEventListener('click', () => {
-            const popup = document.querySelector('.pop-up');
-            popup.remove();
-        });
 
-        // Acessando services
-        const saveButton = document.querySelector('#save');
-        saveButton.addEventListener('click', () => {
-            salvarMusica()
-            const popup = document.querySelector('.pop-up');
-            popup.remove();
-        });
+// Buscando pela página atual
+const thisPage = document.body.dataset.page;
 
-    });
+// Gerando html de cada página
+// -> Músicas
+if (thisPage === "musicas") {
+    initMusicPage();
+} else {
+    if (thisPage == "ensaios") {
+        initEnsaiosPage();
+    }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+// Função que executa todo o script da página de músicas
+// Manipulação do DOM --> musicas.html
+function initMusicPage() {
+    // Adicionar músicas
+    const addMusic = document.querySelector("#addMusic");
+    if (addMusic != null) {
+        addMusic.addEventListener('click', () => {
+            const templateForm = document.querySelector('#addMusic-template');
+            renderForm(templateForm);
+        });
+    } else { return; } // Evitando crash
+}
+
+function initEnsaiosPage() {
+    // Add novo ensaio
+    const addEnsaio = document.querySelector('#addEnsaios');
+    if (addEnsaio) {
+        addEnsaio.addEventListener('click', () => {
+            const templateForm = document.querySelector('#addEnsaios-template');
+            renderForm(templateForm);
+        });
+    } else {return;}
+}
+
+// Formulários CRUD
+function renderForm(templateForm) { // (template/itemBox, save/edit)
+    // Geral
+    const formulario = templateForm.content.cloneNode(true);
+    document.body.appendChild(formulario);
+    // Fechar janela
+    document.querySelector('.close-crud').addEventListener('click', () => {
+        const popup = document.querySelector('.pop-up');
+        popup.remove();
+    });
+    // Salvar / Interação com services
+    document.querySelector('#save').addEventListener('click', (e) => {
+        window.alert(e.target.closest(".crud-box").classList);
+        //salvarMusica()
+        // Definindo qual formulário foi criado (ensaio, música ou escala)
+        const popup = document.querySelector('.pop-up');
+        popup.remove();
+    });
+
+}
+
+
+// Buscando por músicas
+/* document.addEventListener("DOMContentLoaded", function () {
     let listaMusicas = buscarLista("musicas");
     const sectionMusica = document.querySelector('.music-list');
     const templateItem = document.querySelector('#itemMusic');
@@ -33,35 +70,16 @@ document.addEventListener("DOMContentLoaded", function () {
     listaMusicas.forEach((musica) => {
         console.log(musica);
     });
-});
+}); */
 
 
 // Gerando elementos músicas
-const searchMusic = document.querySelector('#musicName');
-searchMusic.addEventListener('input', () =>{
-    window.alert("OK");
-});
-
-function desenharMusicas(obj) {
-    
-}
+/* const searchMusic = document.querySelector('#musicName');
+searchMusic.addEventListener('input', function () {
+    console.log(this.value);
+}); */
 
 
-// Manipulação do DOM --> Ensaios
-const addEnsaio = document.querySelector('#addEnsaios');
-
-if (addEnsaio != null) {
-    addEnsaio.addEventListener('click', function () {
-        const templateForm = document.querySelector('#addEnsaios-template');
-        const addEnsaioForm = templateForm.content.cloneNode(true);
-        document.body.appendChild(addEnsaioForm);
-        // Fechar janela
-        document.querySelector('.close-crud').addEventListener('click', () => {
-            const popup = document.querySelector('.pop-up');
-            popup.remove();
-        });
-    });
-}
 
 // Manipulação do DOM --> Escalas
 const addEscala = document.querySelector('#addEscalas');
@@ -79,6 +97,12 @@ if (addEscala != null) {
 
 
     });
+}
+
+
+
+function carregarMusicas(section, musicList) {
+    window.alert('Carregar músicas!');
 }
 
 
