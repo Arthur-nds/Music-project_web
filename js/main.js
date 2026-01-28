@@ -23,9 +23,11 @@ if (thisPage == "musicas") {
 function initMusicPage() {
     // Carregar músicas do LocalStorage
     let lista = listarItens("musicas");
-    lista.forEach(musica => {
-        carregarMusica(musica);
-    });
+    if(lista) {
+        lista.forEach(musica => {
+            carregarMusica(musica);
+        });
+    }
 
     // Adicionar músicas
     const addMusic = document.querySelector("#addMusic");
@@ -37,6 +39,11 @@ function initMusicPage() {
     } else { return; } // Evitando crash
 }
 
+
+
+
+
+// Load Ensaios page
 function initEnsaiosPage() {
     // Add novo ensaio
     const addEnsaio = document.querySelector('#addEnsaios');
@@ -48,6 +55,12 @@ function initEnsaiosPage() {
     } else { return; }
 }
 
+
+
+
+
+
+// Load Escalas page
 function initEscalasPage() {
     const addEscala = document.querySelector('#addEscalas');
     if (addEscala) {
@@ -57,6 +70,16 @@ function initEscalasPage() {
         });
     } else { return; }
 }
+
+
+
+
+
+
+
+
+
+
 
 // Formulários CRUD
 function renderForm(templateForm) { // (template/itemBox, save/edit)
@@ -104,42 +127,26 @@ searchMusic.addEventListener('input', function () {
 
 
 function carregarMusica(musica) {
-    // Clonando template
-    const templateItem = document.querySelector('#itemMusic');
-    const boxItem = templateItem.content.cloneNode(true);
-    boxItem.querySelector('.music-title h3').innerHTML = musica.titulo;
-    boxItem.querySelector('.music-title p').innerHTML = musica.nArtista;
-    boxItem.querySelector('.music-info .tom').innerHTML = musica.tom.toUpperCase();
-    boxItem.querySelector('.music-info .bpm').innerHTML = musica.bpm + " BPM";
-    boxItem.querySelector('.music-links .cifra a').setAttribute("href", musica.lCifra);
-    boxItem.querySelector('.music-links .letra a').setAttribute("href", musica.lLetra);
-    boxItem.querySelector('.original-version').setAttribute("href", musica.lOriginal);
-    document.querySelector('.music-list').appendChild(boxItem);
+    let lista = listarItens("musicas");
+    if(lista) {
+        lista.forEach(musica => {
+            // Clonando template
+            const templateItem = document.querySelector('#itemMusic');
+            const boxItem = templateItem.content.cloneNode(true);
+            boxItem.querySelector('.music-title h3').innerHTML = musica.titulo;
+            boxItem.querySelector('.music-title p').innerHTML = musica.nArtista;
+            boxItem.querySelector('.music-info .tom').innerHTML = musica.tom.toUpperCase();
+            boxItem.querySelector('.music-info .bpm').innerHTML = musica.bpm + " BPM";
+            boxItem.querySelector('.music-links .cifra a').setAttribute("href", musica.lCifra);
+            boxItem.querySelector('.music-links .letra a').setAttribute("href", musica.lLetra);
+            boxItem.querySelector('.original-version').setAttribute("href", musica.lOriginal);
+            const musicList = document.querySelector('.music-list');
+            musicList.appendChild(boxItem);
+        });
+    }
+    
 
 }
-/*  
-<article class="box-music item">
-    <header class="music-title">
-        <h3>Nome da música</h3>
-        <p>Artista</p>
-    </header>
-    <div class="music-info">
-        <span class="tom">C</span>
-        <span class="bpm">60 BPM</span>
-    </div>
-    <div class="music-links">
-        <h4>Links:</h4>
-        <span class="cifra"><a href="#" target="_blank" rel="noopener noreferrer">Cifra</a></span>
-        <span class="letra"><a href="#" target="_blank" rel="noopener noreferrer">Letra</a></span>
-        <div class="original-version btn-view">
-            <span class="material-symbols-outlined">open_in_new</span>
-            Ver original
-        </div>
-    </div>
-    <div class="edit-music">
-        <button class="btn-item">Editar</button>
-    </div>
-</article>
-*/
+
 
 
