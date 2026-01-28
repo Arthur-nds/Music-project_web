@@ -35,6 +35,11 @@ main > header > h2{
     grid-template-columns: 1fr auto;
 }
 
+.box-music > header > p {
+    /* color: #808390; */
+    font-weight: 300;
+}
+
 .original-version {
     width: fit-content;
     margin-top: 1rem;

@@ -19,13 +19,13 @@ btn.addEventListener('click', () =>{
     console.log(lista);
     localStorage.setItem('musicas', JSON.stringify(lista));
 }); */
-export function buscarLista(ch) {
+export function listarItens(ch) {
     let res = localStorage.getItem(ch);
     return JSON.parse(res);
 }
 
 export function salvar(ch, objeto) {
-    let lista = buscarLista(ch);
+    let lista = listarItens(ch);
     if(lista == null){
         lista = [];
     }
