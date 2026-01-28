@@ -14,7 +14,7 @@ if (thisPage == "musicas") {
 } else if (thisPage == "escalas") {
     initEscalasPage();
 } else {
-    window.alert(thisPage);
+    initHomePage();
 }
 
 
@@ -22,12 +22,7 @@ if (thisPage == "musicas") {
 // Manipulação do DOM --> musicas.html
 function initMusicPage() {
     // Carregar músicas do LocalStorage
-    let lista = listarItens("musicas");
-    if(lista) {
-        lista.forEach(musica => {
-            carregarMusica(musica);
-        });
-    }
+    carregarMusica();
 
     // Adicionar músicas
     const addMusic = document.querySelector("#addMusic");
@@ -74,7 +69,10 @@ function initEscalasPage() {
 
 
 
-
+//Carregando home
+function initHomePage() {
+    // ...
+}
 
 
 
@@ -97,7 +95,19 @@ function renderForm(templateForm) { // (template/itemBox, save/edit)
         // Buscando pela classe do container .crud-box para saber o tipo de formulário(músicas,ensaios,escalas)
         let tipo = e.target.closest(".crud-box").classList[1];
         console.log(`Tipo CRUD: ${tipo}`);
-        if(tipo == "form-add-music") {salvarMusica()}
+        if(tipo == "form-add-music") {
+            // Buscando dados
+            let tituloMusica = document.querySelector('#titleMusic').value;
+            let linkCifra = document.querySelector('#linkCifra').value;
+            let tomMusic = document.querySelector('#tomMusic').value;
+            let linkLetra = document.querySelector('#linkLetra').value;
+            let nomeArtista = document.querySelector('#nomeArtista').value;
+            let bpmMusica = parseInt(document.querySelector('#bpmMusica').value);
+            let linkOriginal = document.querySelector('#linkOriginal').value;
+            salvarMusica(tituloMusica, linkCifra, tomMusic, linkCifra, linkLetra, nomeArtista, bpmMusica, linkOriginal); 
+            carregarMusica()
+        }
+        else if(tipo == "form-add-ensaio") {salvarEnsaio(); carregarEnsaio();}
         // Definindo qual formulário foi criado (ensaio, música ou escala)
         const popup = document.querySelector('.pop-up');
         popup.remove();
@@ -126,7 +136,9 @@ searchMusic.addEventListener('input', function () {
 }); */
 
 
-function carregarMusica(musica) {
+function carregarMusica() {
+    const musicList = document.querySelector('.music-list');
+    musicList.innerHTML = ''; // Limpando lista para carregar todas as músicas
     let lista = listarItens("musicas");
     if(lista) {
         lista.forEach(musica => {
@@ -139,8 +151,7 @@ function carregarMusica(musica) {
             boxItem.querySelector('.music-info .bpm').innerHTML = musica.bpm + " BPM";
             boxItem.querySelector('.music-links .cifra a').setAttribute("href", musica.lCifra);
             boxItem.querySelector('.music-links .letra a').setAttribute("href", musica.lLetra);
-            boxItem.querySelector('.original-version').setAttribute("href", musica.lOriginal);
-            const musicList = document.querySelector('.music-list');
+            boxItem.querySelector('.original-version').setAttribute("href", musica.lOriginal); 
             musicList.appendChild(boxItem);
         });
     }
