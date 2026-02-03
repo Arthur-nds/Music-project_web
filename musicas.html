@@ -63,11 +63,11 @@
             <br>
             <div class="input-box">
                 <span class="material-symbols-outlined">search</span>
-                <input class="input-search" type="text" id="musicName" placeholder="Buscar músicas..." autocomplete="off">
+                <input class="input-search" type="text" id="musicName" placeholder="Buscar músicas..."
+                    autocomplete="off">
             </div>
         </form>
         <section class="music-list">
-            
             
         </section>
 
@@ -76,7 +76,7 @@
     <template id="itemMusic">
         <article class="box-music item">
             <header class="music-title">
-                <h3>Nome da música</h3>
+                <h3>Nome da música </h3>
                 <p>Artista</p>
             </header>
             <div class="music-info">
@@ -87,13 +87,15 @@
                 <h4>Links:</h4>
                 <span class="cifra"><a href="#" target="_blank" rel="noopener noreferrer">Cifra</a></span>
                 <span class="letra"><a href="#" target="_blank" rel="noopener noreferrer">Letra</a></span>
-                <a class="original-version btn-view">
+                <a class="original-version btn-view" href="#" target="_blank" rel="noopener noreferrer">
                     <span class="material-symbols-outlined">open_in_new</span>
                     Ver original
                 </a>
             </div>
-            <div class="edit-music">
-                <button class="btn-item">Editar</button>
+            <div class="actions-music">
+                <button class="delItem" data-action="deletar"><span
+                        class="material-symbols-outlined">delete</span></button>
+                <button class="btn-item" data-action="editar">Editar</button>
             </div>
         </article>
     </template>
@@ -107,26 +109,26 @@
                     </span>
                     <h2>Nova Música</h2>
                 </header>
-                <form class="formularioTEste">
+                <form>
                     <div class="form-field">
                         <label for="titleMusic">Título da música</label>
-                        <input type="text" id="titleMusic">
+                        <input type="text" id="titleMusic" autocomplete="off">
                     </div>
                     <div class="form-field">
                         <label for="linkCifra">Link da cifra</label>
-                        <input type="text" id="linkCifra">
+                        <input type="text" id="linkCifra" autocomplete="off">
                     </div>
                     <div class="form-field">
                         <label for="tomMusic">Tonalidade</label>
-                        <input type="text" id="tomMusic">
+                        <input type="text" id="tomMusic" autocomplete="off">
                     </div>
                     <div class="form-field">
                         <label for="linkLetra">Link da letra</label>
-                        <input type="text" id="linkLetra">
+                        <input type="text" id="linkLetra" autocomplete="off">
                     </div>
                     <div class="form-field">
                         <label for="nomeArtista">Artista</label>
-                        <input type="text" id="nomeArtista">
+                        <input type="text" id="nomeArtista" autocomplete="off">
                     </div>
                     <div class="form-field">
                         <label for="bpmMusica">Tempo (BPM)</label>
@@ -134,7 +136,7 @@
                     </div>
                     <div class="form-field">
                         <label for="linkOriginal">Link da versão original</label>
-                        <input type="text" id="linkOriginal">
+                        <input type="text" id="linkOriginal" autocomplete="off">
                     </div>
                 </form>
                 <div class="close-crud">

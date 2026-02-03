@@ -104,11 +104,24 @@ main {
     font-weight: 600;
 }
 
-/* h3 {
+.emptyList {
+    grid-column: 1 / -1;
     display: flex;
     align-items: center;
-    gap: .3rem;
-} */
+    justify-content: center;
+    padding: 1rem;
+    flex-direction: column;
+}
+
+.emptyList span {
+    color: #a3a3a3;
+    font-size: 3rem;
+}
+
+.emptyList p {
+    color: #a3a3a3;
+    font-size: 1.3rem;
+}
 
 
 

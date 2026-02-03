@@ -2,6 +2,7 @@ button {
     font-family: "Montserrat", sans-serif;
     height: fit-content;
     width: fit-content;
+    font-size: 1rem;
 }
 
 .btn-item {
@@ -21,7 +22,7 @@ button {
 }
 
 .btn-view {
-        border-radius: .5rem;
+    border-radius: .5rem;
     border: 1px solid #00000021;
     flex-grow: 0;
     background-color: #fff;
@@ -50,7 +51,7 @@ button {
     align-items: center;
     justify-content: space-evenly;
 
-    padding: 1rem ;
+    padding: 1rem;
     font-weight: 700;
     transition: box-shadow .2s ease;
 }
@@ -58,6 +59,27 @@ button {
 .add:hover {
     cursor: pointer;
     box-shadow: 0 0 5px #020822;
+}
+
+.delItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    border: 1px solid #00000021;
+    padding: .5rem;
+    border-radius: .5rem;
+    transition: background-color .2s ease;
+}
+
+.delItem:hover {
+    cursor: pointer;
+    background-color: rgba(255, 0, 0, 0.747);
+    color: #fff;
+}
+
+.delItem > span {
+    font-size: 1.3rem;
 }
 
 label {
@@ -91,7 +113,8 @@ input[type="number"] {
 
 }
 
-input[type="date"], input[type="time"] {
+input[type="date"],
+input[type="time"] {
     width: fit-content;
 }
 
@@ -136,7 +159,7 @@ input[type="date"], input[type="time"] {
     cursor: pointer;
 }
 
-.crud-box > header {
+.crud-box>header {
     display: flex;
     align-items: center;
     gap: .5rem;
@@ -170,7 +193,7 @@ input[type="date"], input[type="time"] {
 }
 
 .boxList {
-    position:absolute;
+    position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
@@ -194,4 +217,3 @@ input[type="date"], input[type="time"] {
     top: 100%;
     padding: .5rem;
 }
-
