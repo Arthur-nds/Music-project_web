@@ -13,7 +13,6 @@ body {
     ;
 }
 
-
 body > header {
     padding: 1rem 1.5rem 1rem 1.5rem;
     /* padding: 2rem; */
@@ -24,10 +23,16 @@ body > header {
 }
 
 .sidebar {
+    position: relative;
     grid-area: sidebar;
     background-color: #003399;
     color: #fff;
     padding: 1.5rem;
+}
+
+.content-sidebar {
+    height: 100vh;
+    position: fixed;
 }
 
 .sidebar a {
@@ -36,7 +41,7 @@ body > header {
     color: #fff;
 }
 
-.sidebar > header {
+.sidebar  header {
     margin-bottom: 2rem;
     padding: .5rem .75rem;
     display: flex;

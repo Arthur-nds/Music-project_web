@@ -23,4 +23,23 @@ class Ensaio {
         const item = getItemId("ensaios", id);
         deleteItem("ensaios", item);
     }
+
+    static buscarObjetoEnsaio(id) {
+        const item = getItemId("ensaios", id); // Buscando item no LocalStorage
+        return structuredClone(item); // Gerando clone do objeto
+    }
+
+    static updateEnsaio(id,titulo,data,local,horario,equipe,repertorio) {
+        const lista = listarItens("ensaios");
+        const item = lista.find((e) => {
+            return e.id == id;
+        });
+        item.titulo = titulo;
+        item.data = data;
+        item.local = local;
+        item.horario = horario,
+        item.equipe = equipe;
+        item.repertorio = repertorio;
+        updateData("ensaios", lista);
+    }
 }

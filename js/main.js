@@ -1,6 +1,8 @@
 import { listarItens } from "./api.js";
 import { MusicaService } from "./services/musicaService.js";
 import { EnsaioService } from "./services/ensaioService.js";
+import { EscalaService } from "./services/escalaService.js";
+import { formatarDataExtenso } from "./dataUtils.js";
 
 
 // Buscando pela página atual
@@ -71,33 +73,53 @@ function initEnsaiosPage() {
     } else { return; }
 
     // Modificações em ensaios
-    listaEnsaios.addEventListener('click', (e)=> {
+    listaEnsaios.addEventListener('click', (e) => {
         const targetButton = e.target.closest('button');
-        const idEnsaio = targetButton.closest('.item').dataset.id;
         if (targetButton) { // targetButton != null
+            const idEnsaio = targetButton.closest('.item').dataset.id;
             const action = targetButton.dataset.action;
             if (action == "deletar") {
                 EnsaioService.deleteEnsaio(idEnsaio);
+                carregarEnsaio();
+            } else {
+                openUpdateEnsaio(idEnsaio);
                 carregarEnsaio();
             }
         }
     });
 }
 
-
-
-
-
-
 // Load Escalas page
 function initEscalasPage() {
+    const container = document.querySelector('.lista-escalas');
     const addEscala = document.querySelector('#addEscalas');
+
+    // Carregando escalas
+    carregarEscala();
+
+    // Adicionar nova escala
     if (addEscala) {
         addEscala.addEventListener('click', () => {
             const templateForm = document.querySelector('#addEscalas-template');
             renderForm(templateForm, "addEscala");
         });
     } else { return; }
+
+    // Ações de edifação
+    container.addEventListener('click', (e) => {
+        const targetButton = e.target.closest('button');
+        if (targetButton) { // targetButton != null
+            const idEscala = targetButton.closest('.item').dataset.id;
+            const action = targetButton.dataset.action;
+            if (action == "deletar") {
+                EscalaService.deleteEscala(idEscala);
+                carregarEscala();
+            } else {
+                openUpdateEscala(idEscala);
+                carregarEscala();
+            }
+        }
+    });
 }
 
 
@@ -146,8 +168,15 @@ function submitForm(modo) {
     else if (modo == "addEnsaio") {
         insertIntoEnsaiosDB();
         carregarEnsaio();
+    } else if (modo == "editEnsaio") {
+        closeUpdateEnsaio();
+        carregarEnsaio();
     } else if (modo == "addEscala") {
-        console.log('addEscala');
+        insertIntoEscalasDB();
+        carregarEscala();
+    } else {
+        closeUpdateEscala();
+        carregarEscala();
     }
 }
 
@@ -196,9 +225,9 @@ function carregarEnsaio() {
             const boxItem = templateItem.content.cloneNode(true);
             boxItem.querySelector('.item').dataset.id = ensaio.id;
             boxItem.querySelector('header h2').innerHTML = ensaio.titulo;
-            boxItem.querySelector('#data-marcada').innerHTML = ensaio.data;
-            boxItem.querySelector('#local-marcado').innerHTML = ensaio.local;
-            boxItem.querySelector('#horario').innerHTML = ensaio.local;
+            boxItem.querySelector('#data-marcada').innerHTML = formatarDataExtenso(ensaio.data);
+            boxItem.querySelector('#local-marcado').innerHTML = '&nbsp;' + ensaio.local;
+            boxItem.querySelector('#horario').innerHTML = '&nbsp;' + ensaio.horario;
             boxItem.querySelector('.equipe-list').innerHTML = ensaio.equipe;
             boxItem.querySelector('.repertorio').innerHTML = ensaio.repertorio;
             listaEnsaios.appendChild(boxItem);
@@ -208,6 +237,31 @@ function carregarEnsaio() {
             <div class="emptyList">
                 <span class="material-symbols-outlined">event_available</span>
                 <p>Nenhum ensaio foi adicionado ainda!</p>
+            </div>
+        `;
+    }
+}
+
+function carregarEscala() {
+    const listaEscalas = document.querySelector('.lista-escalas');
+    listaEscalas.innerHTML = '';
+    const lista = listarItens("escalas");
+    if (lista != null && lista.length > 0) {
+        lista.forEach((escala) => {
+            const templateItem = document.querySelector('#itemEscala');
+            const boxItem = templateItem.content.cloneNode(true);
+            boxItem.querySelector('.item').dataset.id = escala.id;
+            boxItem.querySelector('.item .titulo').innerHTML = escala.titulo;
+            boxItem.querySelector('.item .data').innerHTML = formatarDataExtenso(escala.data);
+            boxItem.querySelector('.lista-equipe').innerHTML = escala.equipe;
+            boxItem.querySelector('.lista-repertorio').innerHTML = escala.repertorio;
+            listaEscalas.appendChild(boxItem);
+        });
+    } else {
+        listaEscalas.innerHTML = `
+            <div class="emptyList">
+                <span class="material-symbols-outlined">calendar_check</span>
+                <p>Nenhuma escala foi adicionada ainda!</p>
             </div>
         `;
     }
@@ -226,6 +280,11 @@ function insertIntoEnsaiosDB() {
     EnsaioService.salvarEnsaio(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5]);
 }
 
+function insertIntoEscalasDB() {
+    // Pegando dados do formulário
+    const dados = getDataForm();
+    EscalaService.salvarEscala(dados[0], dados[1], dados[2], dados[3], dados[4]);
+}
 
 function openUpdateMusic(idMusica) {
     // Pedindo música para o service
@@ -238,6 +297,7 @@ function openUpdateMusic(idMusica) {
     fillFormMusic(musicaEditada);
     // Colocando o id da música no dataset do formulário
     document.querySelector('.crud-box form').dataset.idEdited = idMusica;
+    document.querySelector('.crud-box header h2').innerHTML = 'Editar música'
 }
 
 function closeUpdateMusic() {
@@ -247,6 +307,44 @@ function closeUpdateMusic() {
     MusicaService.updateMusic(idEditado, dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6]);
 }
 
+function openUpdateEnsaio(idEnsaio) {
+    // Buscando objeto correspondente ao Ensaio
+    const ensaioEditado = EnsaioService.buscarObjetoEnsaio(idEnsaio);
+    // Gerando forms
+    const templateForm = document.querySelector('#addEnsaios-template');
+    renderForm(templateForm, "editEnsaio");
+    fillFormEnsaio(ensaioEditado);
+    // Colocando id do ensaio editado no dataset do formulário
+    document.querySelector('.crud-box form').dataset.idEdited = idEnsaio;
+    document.querySelector('.crud-box header h2').innerHTML = 'Editar ensaio'
+}
+
+function closeUpdateEnsaio() {
+    const idEnsaio = document.querySelector('.crud-box form').dataset.idEdited;
+    const dados = getDataForm();
+    EnsaioService.updateEnsaio(idEnsaio, dados[0], dados[1], dados[2], dados[3], dados[4], dados[5]);
+}
+
+function openUpdateEscala(idEscala) {
+    // BUscando objeto
+    const escalaEditada = EscalaService.buscarObjetoEscala(idEscala);
+    console.log(`escalaEditada: ${JSON.stringify(escalaEditada)}`);
+    //Gerando forms
+    const templateForm = document.querySelector('#addEscalas-template');
+    renderForm(templateForm, "editEscalas");
+    fillFormEscala(escalaEditada);
+    // Colocando id do ensaio editado no dataset do formulário
+    document.querySelector('.crud-box form').dataset.idEdited = idEscala;
+    document.querySelector('.crud-box header h2').innerHTML = 'Editar escala'
+}
+
+function closeUpdateEscala() {
+    const idEscala = document.querySelector('.crud-box form').dataset.idEdited;
+    const dados = getDataForm();
+    EscalaService.updateEscala(idEscala, dados[0], dados[1], dados[2], dados[3], dados[4]);
+}
+
+
 function fillFormMusic(obj) {
     document.querySelector('#titleMusic').value = obj.titulo;
     document.querySelector('#linkCifra').value = obj.cifra;
@@ -255,6 +353,22 @@ function fillFormMusic(obj) {
     document.querySelector('#nomeArtista').value = obj.artista;
     document.querySelector('#bpmMusica').value = obj.bpm;
     document.querySelector('#linkOriginal').value = obj.original;
+}
+
+function fillFormEnsaio(obj) {
+    document.querySelector('#titleEnsaio').value = obj.titulo;
+    document.querySelector('#dataEnsaio').value = obj.data;
+    document.querySelector('#localEnsaio').value = obj.local;
+    document.querySelector('#horarioEnsaio').value = obj.horario;
+    document.querySelector('#equipeEnsaio').value = obj.equipe;
+    document.querySelector('#repertorioEnsaio').value = obj.repertorio;
+}
+
+function fillFormEscala(obj) {
+    document.querySelector('#titleEscala').value = obj.titulo;
+    document.querySelector('#dataEscala').value = obj.data;
+    document.querySelector('#equipeEscala').value = obj.equipe;
+    document.querySelector('#repertorioEscala').value = obj.repertorio;
 }
 
 function getDataForm() {

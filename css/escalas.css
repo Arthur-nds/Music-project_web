@@ -62,3 +62,8 @@ footer {
     flex: 1 0;
 }
 
+.actions-escalas {
+    display: flex;
+    gap: 1rem;
+}
+
