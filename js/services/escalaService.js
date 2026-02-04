@@ -55,4 +55,21 @@ export class EscalaService {
         deleteItem("escalas", item);
     }
 
+    static deleteMusicRepertorio(id) {
+        // lista de itens
+        const lista = listarItens("escalas");
+        // Percorrendo lista para limpar array de repertorio
+        if (lista != null && lista.length > 0) {
+            lista.forEach(escala => {
+                if (escala.repertorio.includes(id)) {
+                    item.repertorio = item.repertorio.filter((idMusica) => {
+                        return idMusica != id;
+                    });
+                }
+            });
+        }
+        // Sobrescrevendo o que foi modificado
+        updateData("escalas", lista);
+    }
+
 }

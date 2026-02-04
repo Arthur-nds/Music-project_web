@@ -45,7 +45,6 @@ if (thisPage == "musicas") {
 function initMusicPage() {
     const container = document.querySelector('.music-list'); // Lista com todas as músicas (aplicando ideia de bubbling)
     const addMusic = document.querySelector("#addMusic"); // Botão "Adicionar música"
-
     //Carregando lista de músicas
     carregarMusicList();
 
@@ -59,7 +58,7 @@ function initMusicPage() {
 
     // Buscar músicas
     const inputTxt = document.querySelector('#musicName');
-    inputTxt.addEventListener('input', () =>{
+    inputTxt.addEventListener('input', () => {
         // console.log(inputTxt.value);
         const termo = inputTxt.value.toLowerCase().trim();
         pesquisaMusicas(termo);
@@ -74,6 +73,8 @@ function initMusicPage() {
             const idMusica = targetButton.closest('.item').dataset.id;
             if (action == 'deletar') {
                 MusicaService.deleteMusic(idMusica);
+                EnsaioService.deleteMusicRepertorio(idMusica);
+                EscalaService.deleteMusicRepertorio(idMusica);
                 carregarMusicList();
             } else { // Só pode ser "editar"
                 // Chamando edição da música
@@ -359,14 +360,17 @@ function carregarEnsaio() {
             ensaio.repertorio.forEach(idMusica => {
                 // Pegando cópia do objeto
                 const musica = MusicaService.buscarObjetoMusica(idMusica);
-                console.log(MusicaService.buscarObjetoMusica(musica));
-                const itemRepertorio = document.querySelector('#itemRepertorio').content.cloneNode(true);
-                console.log(`musica.titulo => ${musica.titulo}`);
-                itemRepertorio.querySelector('p').innerHTML = musica.titulo;
-                itemRepertorio.querySelector('.tom').innerHTML = musica.tom;
-                itemRepertorio.querySelector('.bpm').innerHTML = musica.bpm;
-                // Adicionando no container
-                boxItem.querySelector('.repertorio .lista').appendChild(itemRepertorio);
+                if (musica != undefined) {
+                    console.log(MusicaService.buscarObjetoMusica(musica));
+                    const itemRepertorio = document.querySelector('#itemRepertorio').content.cloneNode(true);
+                    console.log(`musica.titulo => ${musica.titulo}`);
+                    itemRepertorio.querySelector('p').innerHTML = musica.titulo;
+                    itemRepertorio.querySelector('.tom').innerHTML = musica.tom;
+                    itemRepertorio.querySelector('.bpm').innerHTML = musica.bpm + " BPM";
+                    // Adicionando no container
+                    boxItem.querySelector('.repertorio .lista').appendChild(itemRepertorio);
+                }
+
             });
 
             // boxItem.querySelector('.repertorio').innerHTML = ensaio.repertorio;
@@ -404,7 +408,7 @@ function carregarEscala() {
                 // console.log(`musica.titulo => ${musica.titulo}`);
                 itemRepertorio.querySelector('p').innerHTML = musica.titulo;
                 itemRepertorio.querySelector('.tom').innerHTML = musica.tom;
-                itemRepertorio.querySelector('.bpm').innerHTML = musica.bpm;
+                itemRepertorio.querySelector('.bpm').innerHTML = musica.bpm + " BPM";
                 // Adicionando no container
                 boxItem.querySelector('.repertorio .lista').appendChild(itemRepertorio);
             });
@@ -423,29 +427,28 @@ function carregarEscala() {
 
 function carregarEscalasSemana() {
     const listaEscalas = document.querySelector('.escalas .itens');
+    listaEscalas.innerHTML = `
+        <div class="emptyList">
+            <span class="material-symbols-outlined">calendar_check</span>
+            <p>Nenhuma escala dentro de 1 semana!</p>
+        </div>
+        `;
     const listaCompleta = listarItens("escalas");
+    // Se tive alguma escala dentro de 7 dias, a mensagem acima não será apresentada
     if (listaCompleta != null && listaCompleta.length > 0) {
         const lista = listaCompleta.filter((e) => {
-            return diasAte(e.data) <= 7;
+            return diasAte(e.data) <= 7 && diasAte(e.data) > 0;
         });
         lista.forEach(escala => {
             let tempo = diasAte(escala.data);
-            if (tempo <= 7) {
-                const templateItem = document.querySelector('#itemEscalaHome');
-                const boxItem = templateItem.content.cloneNode(true);
-                boxItem.querySelector('.item-title').innerHTML = escala.titulo;
-                boxItem.querySelector('.item-time-count').innerHTML = tempo + " dia(s)";
-                listaEscalas.appendChild(boxItem);
-            }
+            const templateItem = document.querySelector('#itemEscalaHome');
+            const boxItem = templateItem.content.cloneNode(true);
+            boxItem.querySelector('.item-title').innerHTML = escala.titulo;
+            boxItem.querySelector('.item-time-count').innerHTML = tempo + " dia(s)";
+            listaEscalas.appendChild(boxItem);
+
         });
-    } else {
-        listaEscalas.innerHTML = `
-            <div class="emptyList">
-                <span class="material-symbols-outlined">calendar_check</span>
-                <p>Nenhuma escala dentro de 1 semana!</p>
-            </div>
-        `;
-    }
+    } 
 }
 
 function carregarEnsaiosSemana() {
@@ -514,6 +517,7 @@ function insertIntoMusicDB() {
     // Pegando dados do formulário
     const dados = getDataForm();
     MusicaService.salvarMusica(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6]);
+    // alertaResultado("Música adicionada com sucesso!");
 }
 
 function insertIntoEnsaiosDB() {
@@ -640,6 +644,20 @@ function getRepertorio() {
     });
     return idsRepertorio;
 }
-
-
-
+/* function alertaResultado(msg) {
+    const box = document.createElement('div');
+    box.classList.add('.msg-resultado');
+    box.innerHTML = `
+        <div class="msg-resultado">
+            <p class="resposta">${msg}</p>
+            <span class="closeRes">X</span>
+        </div>
+    `;
+    document.body.appendChild(box);
+    box.addEventListener('click', (e) => {
+        const btClose = e.target.closest('.closeRes');
+        if (btClose != null) {
+            box.remove();
+        }
+    });
+} */
