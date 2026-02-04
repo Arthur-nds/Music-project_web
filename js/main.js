@@ -7,6 +7,25 @@ import { diasAte, formatarDataExtenso } from "./dataUtils.js";
 
 // Buscando pela página atual
 const thisPage = document.body.dataset.page;
+let musicasSelecionadas = []; // vetor usado na motagem de repertório
+
+// Verifica se música já foi selecionada e, se não, adiciona
+function insertMusicaSelecionadas(obj) {
+    const resultado = musicasSelecionadas.some(musica => {
+        return musica.id == obj.id;
+    });
+    return resultado;
+}
+
+// Remove música selecionada
+function removeMusicaSelecionada(obj) {
+    console.log(`musicasSelecionadas antes da remoção: ${JSON.stringify(structuredClone(musicasSelecionadas))}`);
+    musicasSelecionadas = musicasSelecionadas.filter(musica => {
+        return musica.id != obj.id;
+    });
+
+    console.log(`musicasSelecionadas depois da remoção: ${JSON.stringify(musicasSelecionadas)}`);
+}
 
 // Gerando html de cada página
 // -> Músicas
@@ -38,6 +57,14 @@ function initMusicPage() {
         });
     } else { return; } // Evitando crash
 
+    // Buscar músicas
+    const inputTxt = document.querySelector('#musicName');
+    inputTxt.addEventListener('input', () =>{
+        // console.log(inputTxt.value);
+        const termo = inputTxt.value.toLowerCase().trim();
+        pesquisaMusicas(termo);
+    });
+
     // Ações que modificam música ("métodos" do objeto musica)
     container.addEventListener('click', (e) => {
         const targetButton = e.target.closest('button');
@@ -60,6 +87,7 @@ function initMusicPage() {
 
 // Load Ensaios page
 function initEnsaiosPage() {
+
     const listaEnsaios = document.querySelector('.lista-ensaios');
     const addEnsaio = document.querySelector('#addEnsaios'); // Botão de adicionar ensaio
 
@@ -140,9 +168,21 @@ function initHomePage() {
     contagem()
 }
 
+function pesquisaMusicas(termo) {
+    // Pegando lista completa
+    const listaCompleta = listarItens("musicas");
+    const listaFiltrada = listaCompleta.filter(musica => {
+        return musica.titulo.toLowerCase().includes(termo);
+    });
+
+    // console.log(`Lista filtrada: ${JSON.stringify(listaFiltrada)}`);
+    carregarMusicList(listaFiltrada);
+}
 
 
+function carregarPesquisa(lista) {
 
+}
 
 
 // Formulários CRUD
@@ -157,6 +197,7 @@ function renderForm(templateForm, modo) { // (template/itemBox, save/edit)
     });
 
     if (!modo.includes("Music")) {
+        musicasSelecionadas = []; // Limpando array de músicas
         const boxList = document.querySelector('.boxList');
         document.querySelector('#repertorio').addEventListener('input', (e) => {
             const inputTxt = e.target;
@@ -203,8 +244,41 @@ function listarRepertorio(container, txt) {
     }
 }
 
+// Adiciona músicas na lista de músicas selecionadas (UI)
 function adicionarMusica(id) {
-    console.log(`id clicado: ${id}`);
+    // console.log(`id clicado: ${id}`);
+    // Buscando objeto musica
+    const musica = MusicaService.buscarObjetoMusica(id);
+    // Buscando container de músicas selecionadas (boxRes)
+    const container = document.querySelector('.boxRes');
+    // se a música ainda não foi selecionada --> adiciona
+    if (!insertMusicaSelecionadas(musica)) {
+        // Inserindo do array 
+        musicasSelecionadas.push(musica);
+
+        //Pegando template
+        const templateItem = document.querySelector('#itemBoxRes');
+        const item = templateItem.content.cloneNode(true);
+        // console.log(`musicasSelecionadas: ${JSON.stringify(musicasSelecionadas)}`);
+        item.querySelector('.musicSelected').dataset.id = musica.id;
+        item.querySelector('.musicSelected').innerHTML = `${musica.titulo} - ${musica.artista}`;
+        container.appendChild(item);
+    }
+
+    // Remover item
+    container.addEventListener('click', (e) => {
+        const itemMusica = e.target.closest('.musicSelected');
+        if (itemMusica != null) {
+            // Removendo das musicasSelecionadas
+            const idMusica = itemMusica.dataset.id;
+            const objMusica = MusicaService.buscarObjetoMusica(idMusica);
+            console.log(`Objeto que será removido: ${objMusica}`);
+            removeMusicaSelecionada(objMusica);
+            //removendo do html
+            itemMusica.remove()
+        }
+    });
+
 }
 
 function submitForm(modo) {
@@ -231,11 +305,13 @@ function submitForm(modo) {
     }
 }
 
-function carregarMusicList() {
+function carregarMusicList(lista = "") {
     const musicList = document.querySelector('.music-list');
     musicList.innerHTML = '';
     // Carregar músicas do LocalStorage
-    let lista = listarItens("musicas");
+    if (lista == "") {
+        lista = listarItens("musicas");
+    }
     console.log(`Lista antes do forEach: ${JSON.stringify(lista)}`);
     console.log(`lista == null ${lista == null}`);
     if (lista != null && lista.length != 0) {
@@ -280,7 +356,20 @@ function carregarEnsaio() {
             boxItem.querySelector('#local-marcado').innerHTML = '&nbsp;' + ensaio.local;
             boxItem.querySelector('#horario').innerHTML = '&nbsp;' + ensaio.horario;
             boxItem.querySelector('.equipe-list').innerHTML = ensaio.equipe;
-            boxItem.querySelector('.repertorio').innerHTML = ensaio.repertorio;
+            ensaio.repertorio.forEach(idMusica => {
+                // Pegando cópia do objeto
+                const musica = MusicaService.buscarObjetoMusica(idMusica);
+                console.log(MusicaService.buscarObjetoMusica(musica));
+                const itemRepertorio = document.querySelector('#itemRepertorio').content.cloneNode(true);
+                console.log(`musica.titulo => ${musica.titulo}`);
+                itemRepertorio.querySelector('p').innerHTML = musica.titulo;
+                itemRepertorio.querySelector('.tom').innerHTML = musica.tom;
+                itemRepertorio.querySelector('.bpm').innerHTML = musica.bpm;
+                // Adicionando no container
+                boxItem.querySelector('.repertorio .lista').appendChild(itemRepertorio);
+            });
+
+            // boxItem.querySelector('.repertorio').innerHTML = ensaio.repertorio;
             listaEnsaios.appendChild(boxItem);
         });
     } else {
@@ -305,7 +394,21 @@ function carregarEscala() {
             boxItem.querySelector('.item .titulo').innerHTML = escala.titulo;
             boxItem.querySelector('.item .data').innerHTML = formatarDataExtenso(escala.data);
             boxItem.querySelector('.lista-equipe').innerHTML = escala.equipe;
-            boxItem.querySelector('.lista-repertorio').innerHTML = escala.repertorio;
+            // console.log('escala.repertorio: ' + escala.repertorio);
+            escala.repertorio.forEach(idMusica => {
+                // Pegando cópia do objeto
+                console.log(`id música: ${idMusica}`)
+                const musica = MusicaService.buscarObjetoMusica(idMusica);
+                // console.log('Objeto música: ' + MusicaService.buscarObjetoMusica(idMusica));
+                const itemRepertorio = document.querySelector('#itemRepertorio').content.cloneNode(true);
+                // console.log(`musica.titulo => ${musica.titulo}`);
+                itemRepertorio.querySelector('p').innerHTML = musica.titulo;
+                itemRepertorio.querySelector('.tom').innerHTML = musica.tom;
+                itemRepertorio.querySelector('.bpm').innerHTML = musica.bpm;
+                // Adicionando no container
+                boxItem.querySelector('.repertorio .lista').appendChild(itemRepertorio);
+            });
+            // boxItem.querySelector('.lista-repertorio').innerHTML = escala.repertorio;
             listaEscalas.appendChild(boxItem);
         });
     } else {
@@ -416,13 +519,16 @@ function insertIntoMusicDB() {
 function insertIntoEnsaiosDB() {
     // Pegando dados do formulário
     const dados = getDataForm();
+    dados[5] = getRepertorio();
     EnsaioService.salvarEnsaio(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5]);
 }
 
 function insertIntoEscalasDB() {
     // Pegando dados do formulário
     const dados = getDataForm();
-    EscalaService.salvarEscala(dados[0], dados[1], dados[2], dados[3], dados[4]);
+    console.log(getRepertorio());
+    dados[3] = getRepertorio();
+    EscalaService.salvarEscala(dados[0], dados[1], dados[2], dados[3]);
 }
 
 function openUpdateMusic(idMusica) {
@@ -461,6 +567,7 @@ function openUpdateEnsaio(idEnsaio) {
 function closeUpdateEnsaio() {
     const idEnsaio = document.querySelector('.crud-box form').dataset.idEdited;
     const dados = getDataForm();
+    dados[5] = getRepertorio();
     EnsaioService.updateEnsaio(idEnsaio, dados[0], dados[1], dados[2], dados[3], dados[4], dados[5]);
 }
 
@@ -480,6 +587,7 @@ function openUpdateEscala(idEscala) {
 function closeUpdateEscala() {
     const idEscala = document.querySelector('.crud-box form').dataset.idEdited;
     const dados = getDataForm();
+    dados[3] = getRepertorio();
     EscalaService.updateEscala(idEscala, dados[0], dados[1], dados[2], dados[3], dados[4]);
 }
 
@@ -500,14 +608,19 @@ function fillFormEnsaio(obj) {
     document.querySelector('#localEnsaio').value = obj.local;
     document.querySelector('#horarioEnsaio').value = obj.horario;
     document.querySelector('#equipeEnsaio').value = obj.equipe;
-    document.querySelector('#repertorio').value = obj.repertorio;
+    obj.repertorio.forEach(idMusica => {
+        adicionarMusica(idMusica);
+    });
+    // document.querySelector('#repertorio').value = obj.repertorio;
 }
 
 function fillFormEscala(obj) {
     document.querySelector('#titleEscala').value = obj.titulo;
     document.querySelector('#dataEscala').value = obj.data;
     document.querySelector('#equipeEscala').value = obj.equipe;
-    document.querySelector('#repertorioEscala').value = obj.repertorio;
+    obj.repertorio.forEach(idMusica => {
+        adicionarMusica(idMusica);
+    });
 }
 
 function getDataForm() {
@@ -518,6 +631,14 @@ function getDataForm() {
     });
 
     return data;
+}
+
+function getRepertorio() {
+    const idsRepertorio = [];
+    musicasSelecionadas.forEach(musica => {
+        idsRepertorio.push(musica.id);
+    });
+    return idsRepertorio;
 }
 
 

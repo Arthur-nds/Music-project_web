@@ -52,6 +52,7 @@ export class MusicaService {
     static buscarObjetoMusica(id) {
         // Solicitando objeto para LocalStorage
         let item = getItemId("musicas", id);
+        console.log(`Service achou isso: ${item}`);
         return structuredClone(item);
     }
 }
