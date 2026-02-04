@@ -17,11 +17,7 @@ export function deleteItem(ch, item) {
     const novaLista = lista.filter((e) => {
         return e.id != item.id;
     });
-    if (novaLista.lenght == 0) {
-        localStorage.setItem(ch, "");
-    } else {
-        localStorage.setItem(ch, JSON.stringify(novaLista));
-    }
+    localStorage.setItem(ch, JSON.stringify(novaLista));
 
 }
 
@@ -47,5 +43,30 @@ export function gerarId(ch) {
         });
     }
     return id + 1; // Retorna último ID + 1 =  próximo id
+}
+
+export function countItens(ch) {
+    const lista = listarItens(ch);
+    if (lista != null && lista.length > 0) {
+        return lista.length;
+    } else {
+        return 0;
+    }
+}
+
+export function historico(alvo, tipo) {
+    let lista = listarItens("historico");
+    let content = '';
+    if (tipo == "c") {
+        content = `Novo item "${alvo}" adicionado.`;
+    } else {
+        content = `Novo item "${alvo}" editado.`;
+    }
+
+    if (lista == null) {
+        lista = []
+    } 
+    lista.push(content);
+    localStorage.setItem("historico", JSON.stringify(lista));
 }
 

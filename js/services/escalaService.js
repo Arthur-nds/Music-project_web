@@ -1,5 +1,5 @@
 // import { deleteItem, gerarId, getItemId, listarItens, updateData } from "../api";
-import { listarItens, salvar, deleteItem, getItemId, updateData, gerarId } from "../api.js";
+import { listarItens, salvar, deleteItem, getItemId, updateData, gerarId, historico } from "../api.js";
 
 class Escala {
     constructor(id, titulo, data, equipe, repertorio) {
@@ -28,6 +28,7 @@ export class EscalaService {
         const id = gerarId("escalas");
         const escala = new Escala(id, titulo, data, equipe, repertorio);
         salvar("escalas", escala);
+        historico("escala", "c");
     }
 
     static buscarObjetoEscala(id) {
@@ -46,6 +47,7 @@ export class EscalaService {
         item.equipe = equipe;
         item.repertorio = repertorio;
         updateData("escalas", lista);
+        historico("escala", "u")
     }
 
     static deleteEscala(id) {

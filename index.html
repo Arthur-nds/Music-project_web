@@ -48,28 +48,28 @@
 
     <main>
         <div class="cards">
-            <article class="card-escalas ">
+            <article class="card-escalas" data-tipo="escalas">
                 <div class="card-header">
-                    <p>Suas próximas escalas</p>
+                    <p>Escalas lançadas</p>
                     <span class="material-symbols-outlined">calendar_month</span>
                 </div>
                 <span class="card-cont">0</span>
             </article>
-            <article class="card-notifications">
+            <article class="card-notifications" data-tipo="historico">
                 <div class="card-header">
-                    <p>Notificações</p>
+                    <p>Histórico</p>
                     <span class="material-symbols-outlined">notifications</span>
                 </div>
                 <span class="card-cont">0</span>
             </article>
-            <article class="card-ensaios">
+            <article class="card-ensaios" data-tipo="ensaios">
                 <div class="card-header">
                     <p>Ensaios pendentes</p>
                     <span class="material-symbols-outlined">schedule</span>
                 </div>
                 <span class="card-cont">0</span>
             </article>
-            <article class="card-musicas">
+            <article class="card-musicas" data-tipo="musicas">
                 <div class="card-header">
                     <p>Repositório completo</p>
                     <span class="material-symbols-outlined">library_music</span>
@@ -84,23 +84,6 @@
                     <p>As próximas escalas do ministério de louvor</p>
                 </header>
                 <div class="itens">
-                    <article class="item item-layout">
-                        <p class="item-title">Culto de celebração</p>
-                        <div class="item-time-count">0 dia(s)</div>
-                        <div class="item-info">
-                            <span class="n-musicas">5 músicas</span>
-                        </div>
-                        <!-- <button class="btn-item">Detalhes</button> -->
-                    </article>
-                    <article class="item item-layout">
-                        <p class="item-title">Noite de Glória</p>
-                        <div class="item-time-count">0 dia(s)</div>
-                        <div class="item-info">
-                            <span class="n-musicas">5 músicas</span>
-                        </div>
-                        <!-- <button class="btn-item">Detalhes</button> -->
-                    </article>
-                    
                 </div>
             </section>
             <section class="notifications">
@@ -109,16 +92,8 @@
                     <p>Última atualizações</p>
                 </header>
                 <div class="itens">
-                    <article class="item item-layout">
-                        <p class="item-title">Nova escala lançada</p>
-                        <div class="notification-time">
-                            <span class="data">10/11/2025</span>
 
-                            <span class="hora">10:00</span>
-                        </div>
-                    </article>
                 </div>
-                <a href="#" class="btn-view">Ver todas as notificações</a>
             </section>
             <section class="ensaios">
                 <header>
@@ -126,33 +101,43 @@
                     <p>Ensaios marcados</p>
                 </header>
                 <div class="itens">
-                    <article class="item item-layout">
-                        <p class="item-title">Ensaio geral</p>
-                        <div class="item-time-count">0 dia(s)</div>
-                        <div class="item-info">
-                            <span class="data-hora">Data: 20/11/2025</span>
-                            <span class="horario">Horário: 19h</span>
-                            <span class="escala">Escala: 23/11/2025</span>
-                        </div>
-                        <!-- <button class="btn-item">Detalhes</button> -->
-                    </article>
-                    <article class="item item-layout">
-                        <p class="item-title">Ensaio geral</p>
-                        <div class="item-time-count">0 dia(s)</div>
-                        <div class="item-info">
-                            <span class="data-hora">Data: 20/11/2025</span>
-                            <span class="horario">Horário: 19h</span>
-                            <span class="escala">Escala: 23/11/2025</span>
-                        </div>
-                        <!-- <div class="details"><button>Mais detalhes</button></div> -->
-                        <!-- <button class="btn-item">Detalhes</button> -->
-                    </article>
+
                 </div>
-                <a href="#" class="btn-view">Ver ensaios marcados</a>
             </section>
         </section>
     </main>
 
+    <template id="itemEscalaHome">
+        <article class="item">
+            <div class="item-title">Culto de celebração</div>
+            <div class="item-time-count">0 dia(s)</div>
+            <div class="item-info">
+                <!-- <span class="n-musicas">5 músicas</span> -->
+            </div>
+        </article>
+    </template>
+
+    <template id="itemEnsaioHome">
+        <article class="item">
+            <p class="item-title">Ensaio geral</p>
+            <div class="item-time-count">0 dia(s)</div>
+            <div class="item-info">
+                <div class="data-hora">
+                    <span class="material-symbols-outlined">event</span>
+                    <span class="data-marcada"></span>
+                </div>
+                <div class="horario">
+                    <span class="material-symbols-outlined">schedule</span>
+                    <span class="horario-marcado"></span>
+                </div>
+            </div>
+        </article>
+    </template>
+    <template id="templateHistorico">
+        <article class="item">
+            <p class="item-title">Nova escala lançada</p>
+        </article>
+    </template>
     <script type="module" src="js/main.js"></script>
 </body>
 

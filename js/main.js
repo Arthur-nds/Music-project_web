@@ -1,8 +1,8 @@
-import { listarItens } from "./api.js";
+import { countItens, listarItens } from "./api.js";
 import { MusicaService } from "./services/musicaService.js";
 import { EnsaioService } from "./services/ensaioService.js";
 import { EscalaService } from "./services/escalaService.js";
-import { formatarDataExtenso } from "./dataUtils.js";
+import { diasAte, formatarDataExtenso } from "./dataUtils.js";
 
 
 // Buscando pela página atual
@@ -127,7 +127,17 @@ function initEscalasPage() {
 
 //Carregando home
 function initHomePage() {
-    // ...
+    // Carregar escalas da semana
+    carregarEscalasSemana();
+
+    // Carregando ensaios da semana
+    carregarEnsaiosSemana();
+
+    // Carregar histórico
+    carregarHistorico();
+
+    // Contagem dos cards
+    contagem()
 }
 
 
@@ -145,6 +155,20 @@ function renderForm(templateForm, modo) { // (template/itemBox, save/edit)
         const popup = document.querySelector('.pop-up');
         popup.remove();
     });
+
+    if (!modo.includes("Music")) {
+        const boxList = document.querySelector('.boxList');
+        document.querySelector('#repertorio').addEventListener('input', (e) => {
+            const inputTxt = e.target;
+            listarRepertorio(boxList, inputTxt.value);
+        });
+        boxList.addEventListener('click', (e) => {
+            const itemTarget = e.target.closest('.itemList');
+            adicionarMusica(itemTarget.dataset.id);
+        });
+
+    }
+
     // Salvar / Interação com services
     document.querySelector('#save').addEventListener('click', (e) => {
         // Defindo o que será feito
@@ -154,6 +178,33 @@ function renderForm(templateForm, modo) { // (template/itemBox, save/edit)
         popup.remove();
     });
 
+}
+
+function listarRepertorio(container, txt) {
+    container.innerHTML = '';
+    // Buscar lista de músicas
+    const lista = listarItens("musicas");
+    if (lista != null && lista.length > 0) {
+        const listaFiltrada = lista.filter((musica) => {
+            return musica.titulo.toLowerCase().includes(txt.toLowerCase());
+        });
+        // console.log(`Lista filtrada: ${JSON.stringify(listaFiltrada)}`);
+        // <span class="itemList"> Nome da Música - Artista</span>
+        listaFiltrada.forEach(m => {
+            const templateItem = document.querySelector('#itemListTemplate');
+            const boxItem = templateItem.content.cloneNode(true);
+            boxItem.querySelector('.itemList').dataset.id = m.id;
+            boxItem.querySelector('.titleRepertorio').innerHTML = m.titulo;
+            boxItem.querySelector('.artistaRepertorio').innerHTML = m.artista;
+            container.appendChild(boxItem);
+        });
+    } else {
+        container.innerHTML = `Nenhuma música foi adicionada.`;
+    }
+}
+
+function adicionarMusica(id) {
+    console.log(`id clicado: ${id}`);
 }
 
 function submitForm(modo) {
@@ -267,6 +318,94 @@ function carregarEscala() {
     }
 }
 
+function carregarEscalasSemana() {
+    const listaEscalas = document.querySelector('.escalas .itens');
+    const listaCompleta = listarItens("escalas");
+    if (listaCompleta != null && listaCompleta.length > 0) {
+        const lista = listaCompleta.filter((e) => {
+            return diasAte(e.data) <= 7;
+        });
+        lista.forEach(escala => {
+            let tempo = diasAte(escala.data);
+            if (tempo <= 7) {
+                const templateItem = document.querySelector('#itemEscalaHome');
+                const boxItem = templateItem.content.cloneNode(true);
+                boxItem.querySelector('.item-title').innerHTML = escala.titulo;
+                boxItem.querySelector('.item-time-count').innerHTML = tempo + " dia(s)";
+                listaEscalas.appendChild(boxItem);
+            }
+        });
+    } else {
+        listaEscalas.innerHTML = `
+            <div class="emptyList">
+                <span class="material-symbols-outlined">calendar_check</span>
+                <p>Nenhuma escala dentro de 1 semana!</p>
+            </div>
+        `;
+    }
+}
+
+function carregarEnsaiosSemana() {
+    const listaEnsaios = document.querySelector('.ensaios .itens');
+    const listaCompleta = listarItens("ensaios");
+
+    if (listaCompleta != null && listaCompleta.length > 0) {
+        const lista = listaCompleta.filter((e) => {
+            return diasAte(e.data) <= 7;
+        });
+        console.log(JSON.stringify(lista));
+        lista.forEach(ensaio => {
+            let tempo = diasAte(ensaio.data);
+            if (tempo <= 7) {
+                const templateItem = document.querySelector('#itemEnsaioHome');
+                const boxItem = templateItem.content.cloneNode(true);
+                boxItem.querySelector('.item-title').innerHTML = ensaio.titulo;
+                boxItem.querySelector('.item-time-count').innerHTML = tempo + " dia(s)";
+                boxItem.querySelector('.horario-marcado').innerHTML = ensaio.horario;
+                boxItem.querySelector('.data-marcada').innerHTML = formatarDataExtenso(ensaio.data);
+                listaEnsaios.appendChild(boxItem);
+            }
+        });
+    } else {
+        listaEnsaios.innerHTML = `
+            <div class="emptyList">
+                <span class="material-symbols-outlined">event_available</span>
+                <p>Nenhum ensaio marcado dentro de 1 semana!</p>
+            </div>
+        `;
+    }
+}
+
+function carregarHistorico() {
+    const historico = listarItens("historico");
+    const listaHistorico = document.querySelector('.notifications .itens');
+    if (historico != null && historico.length > 0) {
+        historico.forEach(h => {
+            const templateItem = document.querySelector('#templateHistorico');
+            const boxItem = templateItem.content.cloneNode(true);
+            boxItem.querySelector('.item-title').innerHTML = h;
+            listaHistorico.append(boxItem);
+        });
+    } else {
+        listaHistorico.innerHTML = `
+            <div class="emptyList">
+                <span class="material-symbols-outlined">contract_edit</span>
+                <p>Nenhuma modificação registrada.</p>
+            </div>
+        `;
+    }
+}
+
+function contagem() {
+    const cards = document.querySelectorAll('.cards article');
+    cards.forEach(card => {
+        // Tipo de card
+        const tipo = card.dataset.tipo;
+        console.log(`Tipo: ${tipo}`);
+        card.querySelector('.card-cont').innerHTML = countItens(tipo);
+    });
+}
+
 // Get data music from form and call salvarMusica(...)
 function insertIntoMusicDB() {
     // Pegando dados do formulário
@@ -361,7 +500,7 @@ function fillFormEnsaio(obj) {
     document.querySelector('#localEnsaio').value = obj.local;
     document.querySelector('#horarioEnsaio').value = obj.horario;
     document.querySelector('#equipeEnsaio').value = obj.equipe;
-    document.querySelector('#repertorioEnsaio').value = obj.repertorio;
+    document.querySelector('#repertorio').value = obj.repertorio;
 }
 
 function fillFormEscala(obj) {

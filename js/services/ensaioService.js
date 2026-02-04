@@ -1,4 +1,4 @@
-import { listarItens, salvar, deleteItem, getItemId, updateData, gerarId } from "../api.js";
+import { listarItens, salvar, deleteItem, getItemId, updateData, gerarId, historico } from "../api.js";
 
 class Ensaio {
     constructor(id,titulo,data,local,horario,equipe,repertorio) {
@@ -15,7 +15,8 @@ class Ensaio {
  export class EnsaioService {
     static salvarEnsaio(titulo,data,local,horario,equipe,repertorio) {
         const id = gerarId("ensaios");
-        salvar("ensaios", new Ensaio(id,titulo,data,local,horario,equipe,repertorio))
+        salvar("ensaios", new Ensaio(id,titulo,data,local,horario,equipe,repertorio));
+        historico("ensaio", "c");
     }
 
     static deleteEnsaio(id) {
@@ -41,5 +42,6 @@ class Ensaio {
         item.equipe = equipe;
         item.repertorio = repertorio;
         updateData("ensaios", lista);
+        historico("ensaio", "u");
     }
 }

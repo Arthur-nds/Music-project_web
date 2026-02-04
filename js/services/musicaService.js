@@ -1,4 +1,4 @@
-import { listarItens, salvar, deleteItem, getItemId, updateData, gerarId } from "../api.js";
+import { listarItens, salvar, deleteItem, getItemId, updateData, gerarId, historico } from "../api.js";
 
 // Representação do objeto musica
 class Musica {
@@ -19,15 +19,16 @@ export class MusicaService {
         const id = gerarId("musicas");
         const musica = new Musica(id, tituloMusica, linkCifra, tomMusic, linkLetra, nomeArtista, bpmMusica, linkOriginal);
         salvar("musicas", musica); // Guarda no LocalStorage
+        historico("música", "c");
     }
 
     static deleteMusic(id) {
         // Regras de negócio
         // Em breve
         // Buscando elemento
-        const item = getItemId("musicas",id);
-        deleteItem("musicas",item)
-        
+        const item = getItemId("musicas", id);
+        deleteItem("musicas", item)
+
     }
 
     static updateMusic(id, titulo, cifra, tom, letra, artista, bpm, original) {
@@ -45,12 +46,12 @@ export class MusicaService {
         item.original = "https://" + original;
         console.log(`Lista depois do update: ${JSON.stringify(lista)}`);
         updateData("musicas", lista);
-
+        historico("música", "u");
     }
 
     static buscarObjetoMusica(id) {
         // Solicitando objeto para LocalStorage
-        let item = getItemId("musicas",id);
+        let item = getItemId("musicas", id);
         return structuredClone(item);
     }
 }
